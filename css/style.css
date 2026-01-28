@@ -1,0 +1,137 @@
+/* --- 1. Header & Layout --- */
+.main-header {
+  background-color: #fff;
+  padding: 25px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  z-index: 10; /* Ser till att menyn ligger ovanpå bildspelet */
+}
+
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* --- 2. Navigation (Vänster) --- */
+.navigation {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+.navigation a {
+  display: inline-block; /* Gör att padding fungerar korrekt för bakgrunden */
+  text-decoration: none;
+  color: #333;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 12px 18px;
+  border-radius: 4px;
+  /* Vi har tagit bort transition här för direkt respons som du bad om tidigare */
+}
+
+/* HOVER-EFFEKTEN */
+.navigation a:hover {
+  background-color: #c7081b !important;
+  color: #ffffff !important;
+}
+
+/* --- 3. Logotyp (Mitten) --- */
+.logo-container {
+  flex: 0 0 auto;
+  padding: 0 50px;
+}
+
+.logo-container img {
+  height: 110px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* --- 4. Kontaktinfo (Höger) --- */
+.contact-info {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 30px;
+  font-size: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-item img {
+  width: 20px;
+  height: auto;
+}
+
+.contact-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+.contact-item a:hover {
+  color: #c7081b;
+}
+
+/* --- 5. BILDSPEL (HERO) --- */
+.hero-section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 20px auto 0; /* Centrerad med 20px marginal uppåt */
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  line-height: 0;
+}
+
+.slideshow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* --- 6. Info Sektion --- */
+.info-section {
+  padding-top: 50px;
+}
+
+.info-section a {
+  text-decoration: none;
+  color: #c7081b;
+}
