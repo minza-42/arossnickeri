@@ -1,16 +1,41 @@
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
+  const prevBtn = document.querySelector(".slide-btn.prev");
+  const nextBtn = document.querySelector(".slide-btn.next");
+  let slideInterval;
 
-function nextSlide() {
-  // Ta bort "active" från nuvarande bild
-  slides[currentSlide].classList.remove("active");
+  function showNextSlide() {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
 
-  // Räkna ut nästa bild (börja om på 0 om vi är vid slutet)
-  currentSlide = (currentSlide + 1) % slides.length;
+  function showPrevSlide() {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    slides[currentSlide].classList.add("active");
+  }
 
-  // Lägg till "active" på nästa bild
-  slides[currentSlide].classList.add("active");
-}
+  function startSlideInterval() {
+    slideInterval = setInterval(showNextSlide, 10000); // Byt bild var 10:e sekund
+  }
 
-// Byt bild var 5:e sekund (5000 millisekunder)
-setInterval(nextSlide, 5000);
+  function resetSlideInterval() {
+    clearInterval(slideInterval);
+    startSlideInterval();
+  }
+
+  startSlideInterval();
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      showPrevSlide();
+      resetSlideInterval();
+    });
+    nextBtn.addEventListener("click", () => {
+      showNextSlide();
+      resetSlideInterval();
+    });
+  }
+});

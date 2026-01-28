@@ -5,9 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aros Snickeri</title>
-
-  <link rel="icon" type="image/png" href="img/logo.webp">
-
+  <link rel="icon" type="image/png" href="aros-snickeri.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -44,11 +42,13 @@
 </header>
 
 <body>
-  <!-- Backgrunds bild-->
+  <!-- Bakgrundsbild-->
   <section class="hero-section">
     <div class="slideshow-container">
-      <img src="img/backgorund.webp" class="slide active" alt="Miljöbild 1">
+      <button class="slide-btn prev" aria-label="Föregående bild">&#10094;</button>
+      <img src="img/background.webp" class="slide active" alt="Miljöbild 1">
       <img src="img/resturant-counter.webp" class="slide" alt="Miljöbild 2">
+      <button class="slide-btn next" aria-label="Nästa bild">&#10095;</button>
     </div>
   </section>
 
@@ -99,7 +99,7 @@
 
       <div class="footer-right">
         <h2>Om oss</h2>
-        <nav class="navigation">
+        <nav class="navigation footer-nav">
           <ul>
             <li><a href="html/om-oss.html">Om oss</a></li>
             <li><a href="html/vad-vi-gor.html">Snickeri och maskinpark</a></li>
@@ -113,7 +113,8 @@
   <button id="backToTop" aria-label="Scroll to top" title="Scroll to top">
     <img src="img/arrow_upward.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
   </button>
-  <script type="module" src="src/main.js"></script>
+  <!-- Flytta script-taggen hit och rätta sökvägen -->
+  <script type="module" src="scr/main.js"></script>
 </body>
 
 </html>

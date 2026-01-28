@@ -104,10 +104,18 @@
   line-height: 0;
 }
 
+.hero-section button {
+  z-index: 101 !important; /* Måste vara högre än bildernas z-index */
+  pointer-events: auto !important;
+}
+
 .slideshow-container {
   width: 100%;
-  height: 100%;
+  height: 500px;
+  max-width: 1400px;
+  margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 .slide {
@@ -126,6 +134,30 @@
   opacity: 1;
 }
 
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  font-size: 2.5rem;
+  padding: 0 16px;
+  cursor: pointer;
+  z-index: 2;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.slide-btn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+.slide-btn.prev {
+  left: 10px;
+}
+.slide-btn.next {
+  right: 10px;
+}
+
 /* --- 6. Info Sektion --- */
 .info-section {
   padding-top: 50px;
@@ -134,4 +166,37 @@
 .info-section a {
   text-decoration: none;
   color: #c7081b;
+}
+
+/* --- 7. Footer Navigation --- */
+.footer-nav {
+  flex: unset;
+  display: block;
+  justify-content: unset;
+  margin-top: 10px;
+}
+.footer-nav ul {
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-nav li {
+  margin-bottom: 6px;
+}
+.footer-nav a {
+  color: #333;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: none;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  transition: none;
+  text-decoration: underline;
+}
+.footer-nav a:hover {
+  background: none !important;
+  color: #333 !important;
+  text-decoration: underline;
 }
