@@ -1,3 +1,35 @@
+/* SIDEBAR NAVIGATION BORDER STYLING */
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 10px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #c7081b;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 0;
+  background: none;
+  transition:
+    border-bottom-color 0.2s,
+    background 0.2s;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  border-bottom-color: #c7081b;
+  background: none;
+}
 /* ==========================================
    SERVICES PAGE STYLES (Vad Vi Gör)
    Sidebar + Content Layout
@@ -96,11 +128,9 @@
   height: 280px;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease;
 }
 
 .service-image:hover img {
-  transform: scale(1.05);
 }
 
 /* --- SERVICE TEXT --- */

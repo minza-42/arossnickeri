@@ -1,8 +1,8 @@
 /* --- SPECIALSNICKERIET & PRODUKTHÖJDPUNKT --- */
 .specialty-section {
   max-width: 1400px;
-  margin: -30px auto 0;
-  padding: 20px 40px;
+  margin: 80px auto 0;
+  padding: 60px 40px;
   text-align: center;
 }
 
@@ -377,6 +377,38 @@ body {
   flex: 1;
   display: flex;
   justify-content: flex-start;
+  position: relative;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  transition: all 0.3s;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(7px, 7px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
 }
 
 .navigation ul {
@@ -396,11 +428,89 @@ body {
   text-transform: uppercase;
   padding: 12px 18px;
   border-radius: 4px;
+  transition: all 0.3s;
 }
 
 .navigation a:hover {
   background-color: #c7081b !important;
   color: #ffffff !important;
+}
+
+/* --- DROPDOWN MENU --- */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dropdown-arrow {
+  width: 10px;
+  height: 10px;
+  transition: transform 0.3s;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.dropdown:hover .dropdown-arrow,
+.dropdown.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  min-width: 280px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  padding: 8px 0;
+  margin-top: 8px;
+  list-style: none;
+  z-index: 1001;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s;
+  pointer-events: none;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-content li {
+  margin: 0;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: none;
+  transition: all 0.2s;
+  border-radius: 0;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f8f8 !important;
+  color: #c7081b !important;
+  padding-left: 25px;
 }
 
 /* --- 3. LOGOTYP --- */
@@ -492,19 +602,28 @@ body {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   color: #fff;
   border: none;
   font-size: 2.5rem;
   padding: 0 16px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 100;
   border-radius: 4px;
-  transition: background 0.2s;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .slide-btn:hover {
   background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slide-btn:active {
+  transform: translateY(-50%) scale(0.95);
 }
 
 .slide-btn.prev {
@@ -768,23 +887,71 @@ footer > p {
     flex-direction: column;
     gap: 20px;
     padding: 20px 15px;
+    position: relative;
   }
 
   .navigation {
     order: 3;
     width: 100%;
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
   }
 
   .navigation ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 20px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 8px 8px;
+  }
+
+  .navigation ul.active {
+    display: flex;
+  }
+
+  .navigation li {
+    width: 100%;
   }
 
   .navigation a {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 0;
+    font-size: 1rem;
+  }
+
+  /* Dropdown på mobil */
+  .dropdown-content {
+    position: static;
+    display: none;
+    box-shadow: none;
+    margin-top: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+    opacity: 1;
+    transform: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    padding: 12px 20px 12px 40px;
     font-size: 0.95rem;
-    padding: 8px 12px;
+  }
+
+  .dropdown-content a:hover {
+    padding-left: 45px !important;
   }
 
   .logo-container {
