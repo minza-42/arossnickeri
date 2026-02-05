@@ -1,8 +1,8 @@
 /* --- SPECIALSNICKERIET & PRODUKTHÖJDPUNKT --- */
 .specialty-section {
   max-width: 1400px;
-  margin: 80px auto 0;
-  padding: 60px 40px;
+  margin: -30px auto 0;
+  padding: 20px 40px;
   text-align: center;
 }
 
@@ -135,9 +135,19 @@
 }
 
 /* --- RESPONSIVE --- */
+@media screen and (max-width: 1200px) {
+  .specialty-section {
+    max-width: 95%;
+  }
+
+  .about-section {
+    max-width: 95%;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .specialty-section {
-    padding: 50px 20px;
+    padding: 50px 30px;
   }
 
   .product-highlight {
@@ -153,8 +163,12 @@
   }
 
   .about-section {
-    padding: 50px 20px;
+    padding: 50px 30px;
     gap: 50px;
+  }
+
+  .client-logos {
+    max-width: 400px;
   }
 }
 
@@ -176,10 +190,11 @@
   .product-highlight {
     flex-direction: column;
     gap: 0;
-    max-width: 600px;
+    max-width: 100%;
   }
 
   .product-highlight img {
+    flex: none;
     width: 100%;
     height: 350px;
     border-radius: 8px 8px 0 0;
@@ -202,6 +217,7 @@
   }
 
   .client-logos {
+    flex: none;
     width: 100%;
     max-width: 450px;
   }
@@ -215,14 +231,57 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
   .specialty-section {
     padding: 30px 15px;
     margin: 40px auto 0;
   }
 
   .specialty-section h2 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+  }
+
+  .specialty-section > p {
+    font-size: 1.05rem;
+  }
+
+  .product-highlight img {
+    height: 300px;
+  }
+
+  .product-info {
+    padding: 25px 20px;
+  }
+
+  .product-info h3 {
+    font-size: 1.5rem;
+  }
+
+  .product-info p {
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding: 35px 15px;
+  }
+
+  .client-logos {
+    max-width: 100%;
+  }
+
+  .about-text h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .specialty-section {
+    padding: 25px 15px;
+    margin: 30px auto 0;
+  }
+
+  .specialty-section h2 {
+    font-size: 1.6rem;
   }
 
   .specialty-section > p {
@@ -231,35 +290,49 @@
   }
 
   .product-highlight img {
-    height: 280px;
+    height: 250px;
   }
 
   .product-info {
-    padding: 25px 20px;
+    padding: 20px 15px;
   }
 
   .product-info h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .product-info p {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .about-section {
     padding: 30px 15px;
   }
 
-  .client-logos {
-    max-width: 100%;
-  }
-
   .about-text h2 {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
   }
 
   .about-text p {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .specialty-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .product-highlight img {
+    height: 220px;
+  }
+
+  .product-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .about-text h2 {
+    font-size: 1.4rem;
   }
 }
 /* ==========================================
@@ -645,6 +718,13 @@ footer > p {
 
 /* --- 9. RESPONSIVE DESIGN --- */
 
+/* Large Tablets */
+@media screen and (max-width: 1200px) {
+  .header-wrapper {
+    padding: 0 30px;
+  }
+}
+
 /* Tablets */
 @media screen and (max-width: 1024px) {
   .header-wrapper {
@@ -659,8 +739,25 @@ footer > p {
     height: 90px;
   }
 
+  .navigation a {
+    font-size: 1.1rem;
+    padding: 10px 15px;
+  }
+
   .info-section {
     padding: 40px 20px;
+  }
+}
+
+/* Tablet Portrait */
+@media screen and (max-width: 900px) {
+  .navigation a {
+    font-size: 1rem;
+    padding: 10px 14px;
+  }
+
+  .logo-container {
+    padding: 0 20px;
   }
 }
 
@@ -670,6 +767,7 @@ footer > p {
   .header-wrapper {
     flex-direction: column;
     gap: 20px;
+    padding: 20px 15px;
   }
 
   .navigation {
@@ -681,11 +779,11 @@ footer > p {
   .navigation ul {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
   }
 
   .navigation a {
-    font-size: 1rem;
+    font-size: 0.95rem;
     padding: 8px 12px;
   }
 
@@ -703,18 +801,31 @@ footer > p {
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    font-size: 0.95rem;
   }
 
   /* Hero Section */
   .hero-section,
   .slideshow-container {
     height: 300px;
+    margin: 15px auto 0;
+  }
+
+  .slide-btn {
+    font-size: 2rem;
+    padding: 0 12px;
   }
 
   /* Info Section */
   .info-section {
     flex-direction: column;
     gap: 30px;
+    padding: 40px 15px;
+  }
+
+  .info-section h3 {
+    font-size: 1.3rem;
+    width: auto;
   }
 
   /* Footer */
@@ -734,8 +845,12 @@ footer > p {
 
 /* Small Mobile */
 @media screen and (max-width: 480px) {
+  .header-wrapper {
+    padding: 15px 10px;
+  }
+
   .navigation a {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     padding: 6px 10px;
   }
 
@@ -743,8 +858,55 @@ footer > p {
     height: 70px;
   }
 
+  .contact-info {
+    font-size: 0.9rem;
+  }
+
   .hero-section,
   .slideshow-container {
     height: 250px;
+    margin: 10px auto 0;
+  }
+
+  .slide-btn {
+    font-size: 1.8rem;
+    padding: 0 10px;
+  }
+
+  .info-section {
+    padding: 30px 15px;
+  }
+
+  .info-section h3 {
+    font-size: 1.2rem;
+  }
+
+  .info-section p {
+    font-size: 0.95rem;
+  }
+
+  footer {
+    margin-top: 40px;
+  }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+  .navigation a {
+    font-size: 0.8rem;
+    padding: 5px 8px;
+  }
+
+  .logo-container img {
+    height: 60px;
+  }
+
+  .hero-section,
+  .slideshow-container {
+    height: 220px;
+  }
+
+  .slide-btn {
+    font-size: 1.5rem;
   }
 }

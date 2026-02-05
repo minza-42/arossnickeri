@@ -4,20 +4,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.querySelector(".slide-btn.prev");
   const nextBtn = document.querySelector(".slide-btn.next");
 
-  if (slides.length > 0) {
+  if (slides.length > 0 && prevBtn && nextBtn) {
     let currentSlide = 0;
     let slideInterval;
 
+    function showSlide(index) {
+      slides.forEach((slide) => slide.classList.remove("active"));
+      slides[index].classList.add("active");
+    }
+
     function showNextSlide() {
-      slides[currentSlide].classList.remove("active");
       currentSlide = (currentSlide + 1) % slides.length;
-      slides[currentSlide].classList.add("active");
+      showSlide(currentSlide);
     }
 
     function showPrevSlide() {
-      slides[currentSlide].classList.remove("active");
       currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      slides[currentSlide].classList.add("active");
+      showSlide(currentSlide);
     }
 
     function startSlideInterval() {
@@ -29,17 +32,60 @@ document.addEventListener("DOMContentLoaded", function () {
       startSlideInterval();
     }
 
+    // Starta automatiskt bildspel
     startSlideInterval();
 
-    if (prevBtn && nextBtn) {
-      prevBtn.addEventListener("click", () => {
-        showPrevSlide();
-        resetSlideInterval();
-      });
-      nextBtn.addEventListener("click", () => {
+    // Event listeners för knappar
+    prevBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Prev button clicked");
+      showPrevSlide();
+      resetSlideInterval();
+    });
+
+    nextBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log("Next button clicked");
+      showNextSlide();
+      resetSlideInterval();
+    });
+
+    // Touch support för mobil
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    const slideContainer = document.querySelector(".slideshow-container");
+
+    slideContainer.addEventListener(
+      "touchstart",
+      function (e) {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true },
+    );
+
+    slideContainer.addEventListener(
+      "touchend",
+      function (e) {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      },
+      { passive: true },
+    );
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) {
+        // Swipe left - visa nästa
         showNextSlide();
         resetSlideInterval();
-      });
+      }
+      if (touchEndX > touchStartX + 50) {
+        // Swipe right - visa föregående
+        showPrevSlide();
+        resetSlideInterval();
+      }
     }
   }
 
