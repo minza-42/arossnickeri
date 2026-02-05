@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aros Snickeri - Kontakt</title>
+  <title>Aros Snickeri - Specialbyggda Möbler</title>
   <link rel="icon" type="image/png" href="../aros-snickeri.png">
   <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/kontakt.css">
+  <link rel="stylesheet" href="../css/service-detail.css">
 </head>
 
 <body>
@@ -42,80 +42,64 @@
     </div>
   </header>
 
-  <!-- Main Content -->
-  <main class="kontakt-layout">
+  <!-- Main Content with Sidebar -->
+  <main class="service-detail-layout">
 
-    <!-- Left Side: Map and Contact Info -->
-    <div class="kontakt-left">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="offentliga-miljoer.html">Offentlig miljö</a></li>
+          <li><a href="byggnadssnickerier.html">Byggnadssnickerier</a></li>
+          <li><a href="specialbyggda-mobler.html" class="active">Specialbyggda möbler</a></li>
+          <li><a href="mattbestallda-bankskivor.html">Måttbeställda bänkskivor</a></li>
+          <li><a href="inomhustrappor.html">Inomhustrappor</a></li>
+          <li><a href="platsbyggda-bokhyllor.html">Platsbyggda bokhyllor</a></li>
+          <li><a href="mobeltorrt-snickerivirke.html">Möbeltorrt snickerivirke</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-      <!-- Google Maps -->
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2008.6891234567!2d17.6789012!3d59.8567890!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465fcbf123456789%3A0x1234567890abcdef!2sAnna%20Fabrisgata%2012a%2C%20754%2054%20Uppsala!5e0!3m2!1ssv!2sse!4v1234567890123!5m2!1ssv!2sse"
-          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+    <!-- Main Content Area -->
+    <div class="service-detail-content">
+
+      <!-- Hero Image -->
+      <div class="detail-hero">
+        <img src="../img/services/specialbyggda-mobler-hero.webp" alt="Specialbyggda möbler">
       </div>
 
-      <!-- Contact Information -->
-      <div class="kontakt-info">
-        <h2>Hör gärna av dig</h2>
-        <p>Tveka inte att höra av dig om du vill ha mer information eller har frågor av något slag.</p>
+      <!-- Main Content -->
+      <article class="detail-article">
 
-        <div class="info-item">
-          <img src="../img/svg/location.svg" alt="Adress">
-          <div>
-            <strong>Anna Fabrisgata 12a, 754 54 Uppsala</strong>
-          </div>
+        <h1>Specialbyggda möbler</h1>
+        <p class="lead-text">
+          Aros Snickeri tillverkar måttanpassade och specialbyggda möbler såsom sideboards, köksbord,
+          skrivbord och skänkar utifrån bilder, ritningar eller befintliga förlagor.
+        </p>
+
+        <h2>Helt efter dina önskemål</h2>
+        <p>
+          Med en specialbyggd möbel behöver du inte begränsas av standardmått och material. Vi kan skräddarsy
+          och måttanpassa exempelvis bokhyllor, sideboards, soffbord, köksbord till såväl offentlig miljö som
+          privata hem. Har du bara en bild, ritning eller idé så kan vi skapa specialtillverkade möbler helt
+          efter dina önskemål gällande mått, form, materialkombination samt konstruktion.
+        </p>
+        <p>
+          Vi kan erbjuda ett flertal olika träslag och ytbehandlingar och alla våra produkter tillverkas i
+          möbeltorrt virke av mycket hög kvalitet. Det gör att våra möbler inte ändrar form eller spricker
+          med tiden.
+        </p>
+
+        <div class="detail-cta">
+          <h2>Vill du veta mer?</h2>
+          <p>
+            <a href="kontakt.html" class="cta-link">Kontakta oss</a> gärna om du har en idé eller ett projekt
+            som du vill diskutera så hjälper vi dig gärna att ta fram en lösning som passar just dina behov.
+          </p>
         </div>
 
-        <div class="info-item">
-          <img src="../img/svg/phone.svg" alt="Telefon">
-          <div>
-            <a href="tel:018100180">018-100 180</a>
-          </div>
-        </div>
+      </article>
 
-        <div class="info-item">
-          <img src="../img/svg/mail.svg" alt="E-post">
-          <div>
-            <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Right Side: Contact Form -->
-    <div class="kontakt-right">
-      <form class="kontakt-form" action="#" method="POST">
-
-        <div class="form-group">
-          <label for="namn">Namn *</label>
-          <input type="text" id="namn" name="namn" required>
-        </div>
-
-        <div class="form-group">
-          <label for="epost">E-post *</label>
-          <input type="email" id="epost" name="epost" required>
-        </div>
-
-        <div class="form-group">
-          <label for="telefon">Telefon</label>
-          <input type="tel" id="telefon" name="telefon">
-        </div>
-
-        <div class="form-group">
-          <label for="meddelande">Meddelande *</label>
-          <textarea id="meddelande" name="meddelande" rows="8" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-          Skicka
-          <span class="arrow">&rarr;</span>
-        </button>
-
-      </form>
     </div>
 
   </main>
