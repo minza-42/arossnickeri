@@ -54,6 +54,7 @@
     </div>
   </section>
 
+  <!-- Info Section -->
   <section class="info-section">
     <div class="column">
       <div class="icon"> <img src="img/svg/trolley.svg" alt="Varukorg"></div>
@@ -80,31 +81,72 @@
     </div>
   </section>
 
+  <!-- Specialsnickeriet -->
+  <section class="specialty-section">
+    <h2>Specialsnickeriet i Uppsala</h2>
+    <p>Vi är specialister på inredningar till offentliga miljöer och företag.</p>
+
+    <div class="product-highlight">
+      <img src="img/corian_bankskiva.jpg" alt="Modernt kök med Corian bänkskiva">
+      <div class="product-info">
+        <h3> Måttbeställda bänkskivor i Corian® och Staron</h3>
+        <p>Utöver klassiska bänkskivor i trä erbjuder vi nu även måttbeställda bänkskivor i kompositmaterialen Corian®
+          och Staron. En bänkskiva i Corian® eller Staron ger ditt kök en exklusiv och unik känsla. Materialen har en
+          mycket bra hållbarhet och kan designas, formas och skarvas i unika variationer, helt utan synliga fogar eller
+          skarvar.</p>
+        <a href="html/mattbestallda-bankskivor.html" class="read-more">Läs mer om bänkskivor i Corian® och Staron
+          &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Om Aros Snickeri -->
+  <section class="about-section">
+    <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos">
+
+    <div class="about-text">
+      <h2>Aros Snickeri</h2>
+      <p>Vi arbetar med beställningssnickerier inom byggnadssnickerier, offentlig miljö samt platsanpassad inredning
+        såsom trappor, receptionsdiskar, bänkskivor, bokhyllor och möbler.</p>
+      <p>Vi har en toppmodern och välutrustad maskinpark med bland annat datorstyrda maskiner, vilket öppnar upp
+        möjligheten för att tillverka större serier.</p>
+      <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar alla
+        våra snickerier.</p>
+      <a href="html/om-oss.html" class="read-more">Mer om oss &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="footer-left">
         <h2>Kontakt</h2>
         <!-- Adress -->
         <h3>Aros Snickeri AB</h3>
-        <p>Anna Fabrisgata 12a
+        <p>Anna Fabrisgata 12a<br>
           754 54 Uppsala</p>
 
         <!-- Telefon & Mail -->
-        <img src="img/svg/phone.svg" alt="Telefon"><a href="tel:018100180">018-100 180</a>
-        <img src="img/svg/mail.svg" alt="E-post"><a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
+        <div class="footer-contact">
+          <img src="../img/svg/phone.svg" alt="Telefon"><a href="tel:018100180">018-100 180</a>
+        </div>
+        <div class="footer-contact">
+          <img src="../img/svg/mail.svg" alt="E-post"><a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
+        </div>
 
         <!-- Öppettider -->
         <h3>Öppetider</h3>
-        <p>Måndag - Fredag 07.00 - 16.00</p>
-        <p>Lunchstängt 11.00 - 11.45</p>
+        <p>Måndag - Fredag 07.00 - 16.00<br>
+          Lunchstängt 11.00 - 11.45</p>
       </div>
 
       <div class="footer-right">
         <h2>Om oss</h2>
         <nav class="navigation footer-nav">
           <ul>
-            <li><a href="html/om-oss.html">Om oss</a></li>
-            <li><a href="html/vad-vi-gor.html">Snickeri och maskinpark</a></li>
+            <li><a href="om-oss.html">Om oss</a></li>
+            <li><a href="vad-vi-gor.html">Snickeri och maskinpark</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </nav>
       </div>
@@ -113,10 +155,10 @@
   </footer>
 
   <button id="backToTop" aria-label="Scroll to top" title="Scroll to top">
-    <img src="img/svg/arrow_upward.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
+    <img src="../img/svg/arrow_upward.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
   </button>
-  <!-- Flytta script-taggen hit och rätta sökvägen -->
-  <script type="module" src="src/main.js"></script>
+
+  <script type="module" src="../src/main.js"></script>
 </body>
 
 </html>

@@ -1,3 +1,267 @@
+/* --- SPECIALSNICKERIET & PRODUKTHÖJDPUNKT --- */
+.specialty-section {
+  max-width: 1400px;
+  margin: 80px auto 0;
+  padding: 60px 40px;
+  text-align: center;
+}
+
+.specialty-section h2 {
+  color: #c7081b;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.specialty-section > p {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 50px;
+  font-weight: 400;
+}
+
+.product-highlight {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1200px;
+  overflow: hidden;
+}
+
+.product-highlight img {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  flex: 1;
+  text-align: left;
+  padding: 40px 50px 40px 0;
+}
+
+.product-info h3 {
+  color: #333;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.product-info p {
+  color: #666;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.product-info .read-more {
+  color: #c7081b;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.product-info .read-more:hover {
+  color: #a00616;
+}
+
+/* --- OM AROS SNICKERI SEKTION --- */
+.about-section {
+  max-width: 1400px;
+  margin: 80px auto 60px;
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
+.client-logos {
+  flex: 0 0 45%;
+  width: 45%;
+  max-width: 500px;
+  display: block;
+  opacity: 0.85;
+  transition: opacity 0.3s;
+}
+
+.client-logos:hover {
+  opacity: 1;
+}
+
+.about-text {
+  flex: 1;
+  text-align: left;
+}
+
+.about-text h2 {
+  color: #c7081b;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.about-text p {
+  color: #666;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about-text .read-more {
+  color: #c7081b;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1.1rem;
+  display: inline-block;
+  margin-top: 10px;
+  transition: color 0.3s;
+}
+
+.about-text .read-more:hover {
+  color: #a00616;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .specialty-section {
+    padding: 50px 20px;
+  }
+
+  .product-highlight {
+    gap: 40px;
+  }
+
+  .product-highlight img {
+    height: 400px;
+  }
+
+  .product-info {
+    padding: 30px 40px 30px 0;
+  }
+
+  .about-section {
+    padding: 50px 20px;
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .specialty-section {
+    padding: 40px 20px;
+    margin: 60px auto 0;
+  }
+
+  .specialty-section h2 {
+    font-size: 2rem;
+  }
+
+  .specialty-section > p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+  }
+
+  .product-highlight {
+    flex-direction: column;
+    gap: 0;
+    max-width: 600px;
+  }
+
+  .product-highlight img {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .product-info {
+    padding: 30px;
+    text-align: center;
+  }
+
+  .product-info h3 {
+    font-size: 1.6rem;
+  }
+
+  .about-section {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 20px;
+    margin: 60px auto 40px;
+  }
+
+  .client-logos {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .specialty-section {
+    padding: 30px 15px;
+    margin: 40px auto 0;
+  }
+
+  .specialty-section h2 {
+    font-size: 1.7rem;
+  }
+
+  .specialty-section > p {
+    font-size: 1rem;
+    margin-bottom: 30px;
+  }
+
+  .product-highlight img {
+    height: 280px;
+  }
+
+  .product-info {
+    padding: 25px 20px;
+  }
+
+  .product-info h3 {
+    font-size: 1.4rem;
+  }
+
+  .product-info p {
+    font-size: 1rem;
+  }
+
+  .about-section {
+    padding: 30px 15px;
+  }
+
+  .client-logos {
+    max-width: 100%;
+  }
+
+  .about-text h2 {
+    font-size: 1.7rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+  }
+}
 /* ==========================================
    AROS SNICKERI - BASE STYLES
    Header, Footer, Startsida
@@ -210,7 +474,10 @@ body {
 }
 
 .info-section h3 {
-  font-size: 1.5rem;
+  min-width: 220px;
+  width: 350px;
+  max-width: 95vw;
+  margin: 0 auto;
   margin-bottom: 15px;
   color: #c7081b;
   font-weight: 700;
