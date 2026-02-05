@@ -1,10 +1,29 @@
-/* --- 1. Header & Layout --- */
+/* ==========================================
+   AROS SNICKERI - BASE STYLES
+   Header, Footer, Startsida
+   ========================================== */
+
+/* --- GENERAL RESET & BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  color: #333;
+  background-color: #fff;
+  line-height: 1.6;
+}
+
+/* --- 1. HEADER --- */
 .main-header {
   background-color: #fff;
   padding: 25px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   position: relative;
-  z-index: 10; /* Ser till att menyn ligger ovanpå bildspelet */
+  z-index: 10;
 }
 
 .header-wrapper {
@@ -16,7 +35,7 @@
   margin: 0 auto;
 }
 
-/* --- 2. Navigation (Vänster) --- */
+/* --- 2. NAVIGATION --- */
 .navigation {
   flex: 1;
   display: flex;
@@ -32,7 +51,7 @@
 }
 
 .navigation a {
-  display: inline-block; /* Gör att padding fungerar korrekt för bakgrunden */
+  display: inline-block;
   text-decoration: none;
   color: #333;
   font-weight: 700;
@@ -40,16 +59,14 @@
   text-transform: uppercase;
   padding: 12px 18px;
   border-radius: 4px;
-  /* Vi har tagit bort transition här för direkt respons som du bad om tidigare */
 }
 
-/* HOVER-EFFEKTEN */
 .navigation a:hover {
   background-color: #c7081b !important;
   color: #ffffff !important;
 }
 
-/* --- 3. Logotyp (Mitten) --- */
+/* --- 3. LOGOTYP --- */
 .logo-container {
   flex: 0 0 auto;
   padding: 0 50px;
@@ -62,7 +79,7 @@
   margin: 0 auto;
 }
 
-/* --- 4. Kontaktinfo (Höger) --- */
+/* --- 4. KONTAKTINFO --- */
 .contact-info {
   flex: 1;
   display: flex;
@@ -92,11 +109,11 @@
   color: #c7081b;
 }
 
-/* --- 5. BILDSPEL (HERO) --- */
+/* --- 5. BILDSPEL (HERO) - ENDAST STARTSIDAN --- */
 .hero-section {
   width: 100%;
   max-width: 1400px;
-  margin: 20px auto 0; /* Centrerad med 20px marginal uppåt */
+  margin: 20px auto 0;
   height: 500px;
   position: relative;
   overflow: hidden;
@@ -105,7 +122,7 @@
 }
 
 .hero-section button {
-  z-index: 101 !important; /* Måste vara högre än bildernas z-index */
+  z-index: 101 !important;
   pointer-events: auto !important;
 }
 
@@ -148,42 +165,162 @@
   border-radius: 4px;
   transition: background 0.2s;
 }
+
 .slide-btn:hover {
   background: rgba(0, 0, 0, 0.7);
 }
+
 .slide-btn.prev {
   left: 10px;
 }
+
 .slide-btn.next {
   right: 10px;
 }
 
-/* --- 6. Info Sektion --- */
+/* --- 6. INFO SEKTION - ENDAST STARTSIDAN --- */
 .info-section {
-  padding-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 50px 40px;
+  align-items: stretch; /* Gör alla kolumner lika höga */
+}
+
+.info-section .column {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-section .icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-section .icon img {
+  width: 80px;
+  height: 80px;
+}
+
+.info-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #c7081b;
+  font-weight: 700;
+}
+
+.info-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+  flex-grow: 1; /* Gör att paragrafen tar upp tillgängligt utrymme */
 }
 
 .info-section a {
+  display: inline-block;
   text-decoration: none;
+  color: #c7081b;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  transition: color 0.3s;
+  margin-top: auto; /* Trycker ner länken till botten */
+}
+
+.info-section a:hover {
+  color: #a00616;
+}
+
+/* --- 7. FOOTER --- */
+footer {
+  background-color: #f5f5f5;
+  padding: 40px 0 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+  margin-bottom: 30px;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+}
+
+footer h2 {
+  font-size: 1.5rem;
+  color: #c7081b;
+  margin-bottom: 15px;
+}
+
+footer h3 {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+footer p {
+  color: #666;
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.footer-contact img {
+  width: 18px;
+  height: auto;
+}
+
+.footer-contact a {
+  text-decoration: none;
+  color: #333;
+}
+
+.footer-contact a:hover {
   color: #c7081b;
 }
 
-/* --- 7. Footer Navigation --- */
+/* Footer Navigation */
 .footer-nav {
   flex: unset;
   display: block;
   justify-content: unset;
   margin-top: 10px;
 }
+
 .footer-nav ul {
   display: block;
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 .footer-nav li {
   margin-bottom: 6px;
 }
+
 .footer-nav a {
   color: #333;
   font-weight: 400;
@@ -195,8 +332,152 @@
   transition: none;
   text-decoration: underline;
 }
+
 .footer-nav a:hover {
   background: none !important;
-  color: #333 !important;
+  color: #c7081b !important;
   text-decoration: underline;
+}
+
+footer > p {
+  text-align: center;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+/* --- 8. BACK TO TOP BUTTON --- */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #c7081b;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+#backToTop:hover {
+  background-color: #a00616;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+#backToTop.show {
+  display: flex;
+}
+
+/* --- 9. RESPONSIVE DESIGN --- */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+  .header-wrapper {
+    padding: 0 20px;
+  }
+
+  .logo-container {
+    padding: 0 30px;
+  }
+
+  .logo-container img {
+    height: 90px;
+  }
+
+  .info-section {
+    padding: 40px 20px;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  /* Header */
+  .header-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .navigation {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navigation ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .navigation a {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+
+  .logo-container {
+    order: 1;
+    padding: 0;
+  }
+
+  .logo-container img {
+    height: 80px;
+  }
+
+  .contact-info {
+    order: 2;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* Hero Section */
+  .hero-section,
+  .slideshow-container {
+    height: 300px;
+  }
+
+  /* Info Section */
+  .info-section {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  /* Footer */
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  #backToTop {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+  .navigation a {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+
+  .logo-container img {
+    height: 70px;
+  }
+
+  .hero-section,
+  .slideshow-container {
+    height: 250px;
+  }
 }

@@ -1,0 +1,296 @@
+/* ==========================================
+   SERVICES PAGE STYLES (Vad Vi Gör)
+   Sidebar + Content Layout
+   ========================================== */
+
+/* --- MAIN LAYOUT --- */
+.services-layout {
+  display: flex;
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 40px;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: #c7081b;
+  font-size: 1rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.sidebar-nav a:hover {
+  background-color: #f8f8f8;
+  border-left-color: #c7081b;
+  padding-left: 25px;
+}
+
+/* --- MAIN CONTENT AREA --- */
+.services-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* --- PAGE HEADER --- */
+.services-header {
+  margin-bottom: 50px;
+}
+
+.services-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.services-header .intro-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* --- SERVICE ITEMS --- */
+.service-item {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 60px;
+  align-items: flex-start;
+}
+
+.service-item:last-child {
+  margin-bottom: 0;
+}
+
+/* --- SERVICE IMAGE --- */
+.service-image {
+  flex: 0 0 280px;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.service-image img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.service-image:hover img {
+  transform: scale(1.05);
+}
+
+/* --- SERVICE TEXT --- */
+.service-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-text h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.service-text p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.service-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #c7081b;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+.service-link:hover {
+  color: #a00616;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+  .services-layout {
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .sidebar {
+    flex: 0 0 200px;
+  }
+
+  .service-image {
+    flex: 0 0 240px;
+  }
+
+  .service-image img {
+    height: 240px;
+  }
+}
+
+/* Tablet Portrait */
+@media screen and (max-width: 900px) {
+  .services-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    top: 0;
+    margin-bottom: 30px;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 0;
+  }
+
+  .sidebar-nav a {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 15px;
+    border-radius: 4px;
+  }
+
+  .sidebar-nav a:hover {
+    padding-left: 15px;
+    border-left: none;
+    border-bottom-color: #c7081b;
+  }
+
+  .service-item {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .service-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .service-image img {
+    height: 300px;
+    width: 100%;
+  }
+
+  .service-link {
+    align-self: flex-start;
+  }
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .services-layout {
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .services-header h1 {
+    font-size: 2rem;
+  }
+
+  .services-header .intro-text {
+    font-size: 1.1rem;
+  }
+
+  .sidebar-nav ul {
+    flex-direction: column;
+  }
+
+  .sidebar-nav a {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    padding: 10px 15px;
+  }
+
+  .sidebar-nav a:hover {
+    border-left-color: #c7081b;
+    border-bottom: none;
+    padding-left: 20px;
+  }
+
+  .service-item {
+    margin-bottom: 40px;
+  }
+
+  .service-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-text p {
+    font-size: 1rem;
+  }
+
+  .service-image img {
+    height: 250px;
+  }
+}
+
+/* Small Mobile */
+@media screen and (max-width: 480px) {
+  .services-layout {
+    padding: 0 15px;
+  }
+
+  .services-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .services-header .intro-text {
+    font-size: 1rem;
+  }
+
+  .service-text h2 {
+    font-size: 1.4rem;
+  }
+
+  .service-image img {
+    height: 200px;
+  }
+
+  .sidebar-nav a {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+  }
+}
