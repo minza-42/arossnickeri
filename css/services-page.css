@@ -1,35 +1,3 @@
-/* SIDEBAR NAVIGATION BORDER STYLING */
-.sidebar-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav li {
-  margin-bottom: 10px;
-}
-
-.sidebar-nav a {
-  display: block;
-  padding: 12px 20px;
-  text-decoration: none;
-  color: #c7081b;
-  font-size: 1rem;
-  font-weight: 500;
-  border: none;
-  border-bottom: 1px solid #e0e0e0;
-  border-radius: 0;
-  background: none;
-  transition:
-    border-bottom-color 0.2s,
-    background 0.2s;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-  border-bottom-color: #c7081b;
-  background: none;
-}
 /* ==========================================
    SERVICES PAGE STYLES (Vad Vi Gör)
    Sidebar + Content Layout
@@ -72,12 +40,19 @@
   font-weight: 500;
   border-left: 3px solid transparent;
   transition: all 0.3s ease;
+  background-color: #fff;
 }
 
-.sidebar-nav a:hover {
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
   background-color: #f8f8f8;
   border-left-color: #c7081b;
   padding-left: 25px;
+}
+
+.sidebar-nav a.active {
+  font-weight: 700;
+  background-color: #fff8f8;
 }
 
 /* --- MAIN CONTENT AREA --- */
@@ -128,9 +103,11 @@
   height: 280px;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
 }
 
 .service-image:hover img {
+  transform: scale(1.05);
 }
 
 /* --- SERVICE TEXT --- */
@@ -162,7 +139,7 @@
   font-weight: 600;
   font-size: 1rem;
   transition: color 0.3s;
-  align-self: flex-end;
+  align-self: flex-start;
   margin-top: auto;
 }
 
@@ -171,6 +148,13 @@
 }
 
 /* --- RESPONSIVE DESIGN --- */
+
+/* Large Desktop */
+@media screen and (max-width: 1400px) {
+  .services-layout {
+    max-width: calc(100% - 40px);
+  }
+}
 
 /* Tablets */
 @media screen and (max-width: 1024px) {
@@ -183,6 +167,19 @@
     flex: 0 0 200px;
   }
 
+  .sidebar-nav a {
+    font-size: 0.95rem;
+    padding: 10px 15px;
+  }
+
+  .services-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .services-header .intro-text {
+    font-size: 1.1rem;
+  }
+
   .service-image {
     flex: 0 0 240px;
   }
@@ -190,12 +187,17 @@
   .service-image img {
     height: 240px;
   }
+
+  .service-text h2 {
+    font-size: 1.7rem;
+  }
 }
 
 /* Tablet Portrait */
 @media screen and (max-width: 900px) {
   .services-layout {
     flex-direction: column;
+    margin: 30px auto;
   }
 
   .sidebar {
@@ -207,8 +209,8 @@
   }
 
   .sidebar-nav ul {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 10px;
   }
 
@@ -219,11 +221,13 @@
   .sidebar-nav a {
     border-left: none;
     border-bottom: 3px solid transparent;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 4px;
+    text-align: center;
   }
 
-  .sidebar-nav a:hover {
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
     padding-left: 15px;
     border-left: none;
     border-bottom-color: #c7081b;
@@ -232,6 +236,7 @@
   .service-item {
     flex-direction: column;
     gap: 20px;
+    margin-bottom: 50px;
   }
 
   .service-image {
@@ -245,15 +250,46 @@
   }
 
   .service-link {
-    align-self: flex-start;
+    align-self: center;
+  }
+
+  .service-text {
+    text-align: center;
   }
 }
 
 /* Mobile */
 @media screen and (max-width: 768px) {
   .services-layout {
-    margin: 30px auto;
-    padding: 0 20px;
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .sidebar {
+    margin-bottom: 25px;
+  }
+
+  .sidebar-nav ul {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .sidebar-nav a {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    padding: 12px 15px;
+    text-align: left;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    border-left-color: #c7081b;
+    border-bottom: none;
+    padding-left: 20px;
+  }
+
+  .services-header {
+    margin-bottom: 40px;
   }
 
   .services-header h1 {
@@ -261,23 +297,7 @@
   }
 
   .services-header .intro-text {
-    font-size: 1.1rem;
-  }
-
-  .sidebar-nav ul {
-    flex-direction: column;
-  }
-
-  .sidebar-nav a {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-    padding: 10px 15px;
-  }
-
-  .sidebar-nav a:hover {
-    border-left-color: #c7081b;
-    border-bottom: none;
-    padding-left: 20px;
+    font-size: 1.05rem;
   }
 
   .service-item {
@@ -285,7 +305,7 @@
   }
 
   .service-text h2 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
 
   .service-text p {
@@ -300,7 +320,22 @@
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .services-layout {
-    padding: 0 15px;
+    padding: 0 10px;
+    margin: 15px auto;
+  }
+
+  .sidebar {
+    margin-bottom: 20px;
+  }
+
+  .sidebar-nav a {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    padding-left: 17px;
   }
 
   .services-header h1 {
@@ -309,6 +344,29 @@
 
   .services-header .intro-text {
     font-size: 1rem;
+  }
+
+  .service-item {
+    margin-bottom: 35px;
+  }
+
+  .service-text h2 {
+    font-size: 1.5rem;
+  }
+
+  .service-text p {
+    font-size: 0.95rem;
+  }
+
+  .service-image img {
+    height: 220px;
+  }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+  .services-header h1 {
+    font-size: 1.6rem;
   }
 
   .service-text h2 {
@@ -320,7 +378,12 @@
   }
 
   .sidebar-nav a {
-    font-size: 0.95rem;
-    padding: 8px 12px;
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    padding-left: 15px;
   }
 }

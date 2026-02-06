@@ -184,8 +184,22 @@
 }
 
 /* Opening hours specific styling */
+.info-item.opening-hours {
+  background-color: #fff8f8;
+  border-left-color: #c7081b;
+}
+
 .info-item.opening-hours p {
-  margin-top: 5px;
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.info-item.opening-hours:hover {
+  background-color: #fff0f0;
 }
 
 /* --- SOCIAL MEDIA SECTION --- */
@@ -245,25 +259,6 @@
 
 .social-link:active {
   transform: translateY(0);
-}
-
-/* Opening Hours Specific Styling */
-.info-item.opening-hours {
-  background-color: #fff8f8;
-  border-left-color: #c7081b;
-}
-
-.info-item.opening-hours p {
-  color: #666;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-top: 8px;
-  margin-bottom: 0;
-  font-weight: 400;
-}
-
-.info-item.opening-hours:hover {
-  background-color: #fff0f0;
 }
 
 /* --- RIGHT SIDE (Form) --- */
@@ -400,6 +395,14 @@
 
 /* --- RESPONSIVE DESIGN --- */
 
+/* Large Desktop */
+@media screen and (max-width: 1400px) {
+  .kontakt-layout {
+    max-width: calc(100% - 40px);
+    margin: 0 20px;
+  }
+}
+
 /* Tablets */
 @media screen and (max-width: 1024px) {
   .kontakt-content {
@@ -443,8 +446,12 @@
 
 /* Mobile */
 @media screen and (max-width: 768px) {
+  .kontakt-layout {
+    margin: 0 10px;
+  }
+
   .map-container {
-    height: 320px;
+    height: 350px;
   }
 
   .map-section {
@@ -453,7 +460,7 @@
   }
 
   .kontakt-content {
-    padding: 0 20px;
+    padding: 0 15px;
     gap: 30px;
     margin-bottom: 40px;
   }
@@ -482,7 +489,8 @@
   }
 
   .info-item strong,
-  .info-item a {
+  .info-item a,
+  .info-item p {
     font-size: 1rem;
   }
 
@@ -495,7 +503,7 @@
   }
 
   .form-group textarea {
-    min-height: 140px;
+    min-height: 130px;
   }
 
   .submit-btn {
@@ -526,11 +534,11 @@
 /* Small Mobile */
 @media screen and (max-width: 480px) {
   .map-container {
-    height: 280px;
+    height: 300px;
   }
 
   .kontakt-content {
-    padding: 0 15px;
+    padding: 0 10px;
     margin-bottom: 30px;
   }
 
@@ -553,6 +561,18 @@
 
   .info-item {
     padding: 10px;
+    gap: 12px;
+  }
+
+  .info-item img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .info-item strong,
+  .info-item a,
+  .info-item p {
+    font-size: 0.95rem;
   }
 
   .kontakt-right-inner {
@@ -596,5 +616,29 @@
 
   .social-media-section h3 {
     font-size: 1.2rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media screen and (max-width: 360px) {
+  .map-container {
+    height: 280px;
+  }
+
+  .kontakt-info h2 {
+    font-size: 1.5rem;
+  }
+
+  .kontakt-info {
+    padding: 20px;
+  }
+
+  .kontakt-right-inner {
+    padding: 20px;
+  }
+
+  .submit-btn {
+    font-size: 0.95rem;
+    padding: 12px 25px;
   }
 }
