@@ -1,7 +1,7 @@
 /* --- SPECIALSNICKERIET & PRODUKTHÖJDPUNKT --- */
 .specialty-section {
   max-width: 1400px;
-  margin: 80px auto 0;
+  margin: -50px auto 0;
   padding: 60px 40px;
   text-align: center;
 }
@@ -653,6 +653,11 @@ h6 {
   margin: 50px auto;
   padding: 50px 40px;
   align-items: stretch; /* Gör alla kolumner lika höga */
+}
+
+.info-section .read-more {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
 }
 
 .info-section .column {
