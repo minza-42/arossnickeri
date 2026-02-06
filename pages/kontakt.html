@@ -8,41 +8,73 @@
   <link rel="icon" type="image/png" href="../aros-snickeri.png">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/kontakt.css">
+  <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
   <header class="main-header">
     <div class="header-wrapper">
-      <!-- Navigation Menu -->
-      <nav class="navigation">
+
+      <!-- Navigation Menu (till vänster) -->
+      <nav class="navigation" aria-label="Huvudnavigation">
         <ul>
-          <li><a href="../index.html">HEM</a></li>
-          <li><a href="../html/om-oss.html">OM OSS</a></li>
-          <li><a href="../html/vad-vi-gor.html">VAD VI GÖR</a></li>
-          <li><a href="../pages/kontakt.html">KONTAKT</a></li>
+          <li><a href="../index.html">Hem</a></li>
+          <li><a href="../html/om-oss.html">Om oss</a></li>
+          <li><a href="../html/vad-vi-gor.html">Vad vi gör</a></li>
+          <li><a href="../pages/kontakt.html">Kontakt</a></li>
         </ul>
       </nav>
 
-      <!-- Logo och klickbar favicon -->
+      <!-- Logo (CENTRERAD) -->
       <div class="logo-container">
-        <a href="../index.html" title="Hem">
+        <a href="../index.html" title="Hem" aria-label="Aros Snickeri Startsida">
           <img src="../img/arossnickeri-logo.webp" alt="Aros Snickeri Logotyp">
         </a>
       </div>
 
-      <!-- Contact Information -->
+      <!-- Contact Information (till höger) -->
       <div class="contact-info">
         <div class="contact-item">
-          <img src="../img/svg/phone.svg" alt="Telefon">
+          <img src="../img/svg/phone.svg" alt="" aria-hidden="true">
           <a href="tel:018100180">018-100 180</a>
         </div>
         <div class="contact-item">
-          <img src="../img/svg/mail.svg" alt="E-post">
+          <img src="../img/svg/mail.svg" alt="" aria-hidden="true">
           <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
         </div>
       </div>
 
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
     </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-navigation" aria-label="Mobilnavigation" hidden>
+      <ul>
+        <li><a href="../index.html">Hem</a></li>
+        <li><a href="../html/om-oss.html">Om oss</a></li>
+        <li><a href="../html/vad-vi-gor.html">Vad vi gör</a></li>
+        <li><a href="../pages/kontakt.html">Kontakt</a></li>
+      </ul>
+      <div class="mobile-contact">
+        <a href="tel:018100180" class="mobile-contact-link">
+          <img src="../img/svg/phone.svg" alt="">
+          018-100 180
+        </a>
+        <a href="mailto:info@arossnickeri.se" class="mobile-contact-link">
+          <img src="../img/svg/mail.svg" alt="">
+          info@arossnickeri.se
+        </a>
+      </div>
+    </nav>
   </header>
 
   <!-- Main Content -->

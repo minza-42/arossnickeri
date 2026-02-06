@@ -7,178 +7,209 @@
   <title>Aros Snickeri</title>
   <link rel="icon" type="image/png" href="aros-snickeri.png">
   <link rel="stylesheet" href="css/style.css">
+  <!-- Google Fonts: Playfair Display for headings, Lato for body -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
 </head>
-<!-- Google Fonts: Playfair Display for headings, Lato for body -->
-<link
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap"
-  rel="stylesheet">
-</head>
-
-<header class="main-header">
-  <div class="header-wrapper">
-    <!-- Navigation Menu -->
-    <nav class="navigation">
-      <ul>
-        <li><a href="index.html">HEM</a></li>
-        <li><a href="html/om-oss.html">OM OSS</a></li>
-        <li><a href="html/vad-vi-gor.html">VAD VI GÖR</a></li>
-        <li><a href="pages/kontakt.html">KONTAKT</a></li>
-      </ul>
-    </nav>
-
-    <!-- Logo och klickbar favicon -->
-    <div class="logo-container">
-      <a href="index.html" title="Hem">
-        <img src="img/arossnickeri-logo.webp" alt="Aros Snickeri Logotyp">
-      </a>
-    </div>
-
-    <!-- Contact Information -->
-    <div class="contact-info">
-      <div class="contact-item">
-        <img src="img/svg/phone.svg" alt="Telefon">
-        <a href="tel:018100180">018-100 180</a>
-      </div>
-      <div class="contact-item">
-        <img src="img/svg/mail.svg" alt="E-post">
-        <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
-      </div>
-    </div>
-
-  </div>
-</header>
 
 <body>
-  <!-- Bakgrundsbild-->
-  <section class="hero-section">
-    <div class="slideshow-container">
-      <img src="img/background.webp" class="slide active" alt="Miljöbild 1">
-      <img src="img/resturant-counter.webp" class="slide" alt="Miljöbild 2">
-      <button class="slide-btn prev" aria-label="Föregående bild" type="button">&#10094;</button>
-      <button class="slide-btn next" aria-label="Nästa bild" type="button">&#10095;</button>
-    </div>
-  </section>
+  <header class="main-header">
+    <div class="header-wrapper">
 
-  <!-- Info Section -->
-  <section class="info-section">
-    <div class="column">
-      <div class="icon"> <img src="img/svg/trolley.svg" alt="Varukorg"></div>
-      <h3>Produkter</h3>
-      <p>Aros Snickeri tillverkar platsanpassade inredningar och möbler till företag, offentliga miljöer samt privata
-        hem. Vi tar hand om hela processen – från idé till monterad produkt.</p>
-      <a href="html/vad-vi-gor.html" class="read-more">Vad vi kan göra &rarr;</a>
-    </div>
+      <!-- Navigation Menu (till vänster) -->
+      <nav class="navigation" aria-label="Huvudnavigation">
+        <ul>
+          <li><a href="index.html">Hem</a></li>
+          <li><a href="html/om-oss.html">Om oss</a></li>
+          <li><a href="html/vad-vi-gor.html">Vad vi gör</a></li>
+          <li><a href="pages/kontakt.html">Kontakt</a></li>
+        </ul>
+      </nav>
 
-    <div class="column">
-      <div class="icon"> <img src="img/svg/ideas.svg" alt="Person med ideer"></div>
-      <h3>Inspiration</h3>
-      <p>Vi har under åren hjälpt många företag och privatpersoner med specialtillverkade snickerier i alla former. Här
-        kan du titta på några av våra utvalda projekt.</p>
-      <a href="html/inspiration.html" class="read-more">Inspiration &rarr;</a>
-    </div>
-
-    <div class="column">
-      <div class="icon"> <img src="img/svg/hardware.svg" alt="Globe"></div>
-      <h3>Om Aros Snickeri</h3>
-      <p>Aros Snickeri har byggt unika möbler och inredningar i över 35 år. För oss är kvalitet, noggrannhet och
-        flexibilitet ledorden i vår verksamhet.</p>
-      <a href="html/om-oss.html" class="read-more">Om Aros Snickeri &rarr;</a>
-    </div>
-  </section>
-
-  <!-- Specialsnickeriet -->
-  <section class="specialty-section">
-    <h2>Specialsnickeriet i Uppsala</h2>
-    <p>Vi är specialister på inredningar till offentliga miljöer och företag.</p>
-  </section>
-
-  <!-- Måttbeställda bänkskivor -->
-  <section class="product-section">
-    <div class="product-highlight">
-      <img src="img/corian_bankskiva.jpg" alt="Modernt kök med Corian bänkskiva">
-      <div class="product-info">
-        <h3> Måttbeställda bänkskivor i Corian® och Staron</h3>
-        <p>Utöver klassiska bänkskivor i trä erbjuder vi nu även måttbeställda bänkskivor i kompositmaterialen Corian®
-          och Staron. En bänkskiva i Corian® eller Staron ger ditt kök en exklusiv och unik känsla. Materialen har en
-          mycket bra hållbarhet och kan designas, formas och skarvas i unika variationer, helt utan synliga fogar eller
-          skarvar.</p>
-        <a href="html/mattbestallda-bankskivor.html" class="read-more">Läs mer om bänkskivor i Corian® och Staron
-          &rarr;</a>
+      <!-- Logo (CENTRERAD) -->
+      <div class="logo-container">
+        <a href="index.html" title="Hem" aria-label="Aros Snickeri Startsida">
+          <img src="img/arossnickeri-logo.webp" alt="Aros Snickeri Logotyp">
+        </a>
       </div>
-    </div>
-  </section>
 
-  <!-- Om Aros Snickeri -->
-  <section class="about-section">
-    <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos">
-
-    <div class="about-text">
-      <h2>Aros Snickeri</h2>
-      <p>Vi arbetar med beställningssnickerier inom byggnadssnickerier, offentlig miljö samt platsanpassad inredning
-        såsom trappor, receptionsdiskar, bänkskivor, bokhyllor och möbler.</p>
-      <p>Vi har en toppmodern och välutrustad maskinpark med bland annat datorstyrda maskiner, vilket öppnar upp
-        möjligheten för att tillverka större serier.</p>
-      <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar alla
-        våra snickerier.</p>
-      <a href="html/om-oss.html" class="read-more">Mer om oss &rarr;</a>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="footer-left">
-        <h2>Kontakt</h2>
-        <!-- Adress -->
-        <h3>Aros Snickeri AB</h3>
-        <p>Anna Fabrisgata 12a<br>
-          754 54 Uppsala</p>
-
-        <!-- Telefon & Mail -->
-        <div class="footer-contact">
-          <img src="../img/svg/phone.svg" alt="Telefon">
+      <!-- Contact Information (till höger) -->
+      <div class="contact-info">
+        <div class="contact-item">
+          <img src="img/svg/phone.svg" alt="" aria-hidden="true">
           <a href="tel:018100180">018-100 180</a>
         </div>
-        <div class="footer-contact">
-          <img src="../img/svg/mail.svg" alt="E-post">
+        <div class="contact-item">
+          <img src="img/svg/mail.svg" alt="" aria-hidden="true">
           <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
         </div>
+      </div>
 
-        <!-- Öppettider -->
-        <h3>Öppetider</h3>
-        <p>Måndag - Fredag 07.00 - 16.00<br>
-          Lunchstängt 11.00 - 11.45</p>
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
 
-        <!-- Karta och vägbeskrivning -->
-        <div class="footer-contact">
-          <a href="https://www.google.com/maps/search/?api=1&query=Aros+Snickeri+AB,+Anna+Fabris+gata+12a,+754+54+Uppsala"
-            target="_blank" rel="noopener noreferrer">Karta och vägbeskrivning</a>
-          <img src="../img/svg/map-pin.svg" alt="Karta">
+    </div>
+
+    <!-- Mobile Navigation (dold som standard) -->
+    <nav class="mobile-navigation" aria-label="Mobilnavigation" hidden>
+      <ul>
+        <li><a href="index.html">Hem</a></li>
+        <li><a href="html/om-oss.html">Om oss</a></li>
+        <li><a href="html/vad-vi-gor.html">Vad vi gör</a></li>
+        <li><a href="pages/kontakt.html">Kontakt</a></li>
+      </ul>
+      <div class="mobile-contact">
+        <a href="tel:018100180" class="mobile-contact-link">
+          <img src="img/svg/phone.svg" alt="">
+          018-100 180
+        </a>
+        <a href="mailto:info@arossnickeri.se" class="mobile-contact-link">
+          <img src="img/svg/mail.svg" alt="">
+          info@arossnickeri.se
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <body>
+    <!-- Bakgrundsbild-->
+    <section class="hero-section">
+      <div class="slideshow-container">
+        <img src="img/background.webp" class="slide active" alt="Miljöbild 1">
+        <img src="img/resturant-counter.webp" class="slide" alt="Miljöbild 2">
+        <button class="slide-btn prev" aria-label="Föregående bild" type="button">&#10094;</button>
+        <button class="slide-btn next" aria-label="Nästa bild" type="button">&#10095;</button>
+      </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+      <div class="column">
+        <div class="icon"> <img src="img/svg/trolley.svg" alt="Varukorg"></div>
+        <h3>Produkter</h3>
+        <p>Aros Snickeri tillverkar platsanpassade inredningar och möbler till företag, offentliga miljöer samt privata
+          hem. Vi tar hand om hela processen – från idé till monterad produkt.</p>
+        <a href="html/vad-vi-gor.html" class="read-more">Vad vi kan göra &rarr;</a>
+      </div>
+
+      <div class="column">
+        <div class="icon"> <img src="img/svg/ideas.svg" alt="Person med ideer"></div>
+        <h3>Inspiration</h3>
+        <p>Vi har under åren hjälpt många företag och privatpersoner med specialtillverkade snickerier i alla former.
+          Här
+          kan du titta på några av våra utvalda projekt.</p>
+        <a href="html/inspiration.html" class="read-more">Inspiration &rarr;</a>
+      </div>
+
+      <div class="column">
+        <div class="icon"> <img src="img/svg/hardware.svg" alt="Globe"></div>
+        <h3>Om Aros Snickeri</h3>
+        <p>Aros Snickeri har byggt unika möbler och inredningar i över 35 år. För oss är kvalitet, noggrannhet och
+          flexibilitet ledorden i vår verksamhet.</p>
+        <a href="html/om-oss.html" class="read-more">Om Aros Snickeri &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Specialsnickeriet -->
+    <section class="specialty-section">
+      <h2>Specialsnickeriet i Uppsala</h2>
+      <p>Vi är specialister på inredningar till offentliga miljöer och företag.</p>
+    </section>
+
+    <!-- Måttbeställda bänkskivor -->
+    <section class="product-section">
+      <div class="product-highlight">
+        <img src="img/corian_bankskiva.jpg" alt="Modernt kök med Corian bänkskiva">
+        <div class="product-info">
+          <h3> Måttbeställda bänkskivor i Corian® och Staron</h3>
+          <p>Utöver klassiska bänkskivor i trä erbjuder vi nu även måttbeställda bänkskivor i kompositmaterialen Corian®
+            och Staron. En bänkskiva i Corian® eller Staron ger ditt kök en exklusiv och unik känsla. Materialen har en
+            mycket bra hållbarhet och kan designas, formas och skarvas i unika variationer, helt utan synliga fogar
+            eller
+            skarvar.</p>
+          <a href="html/mattbestallda-bankskivor.html" class="read-more">Läs mer om bänkskivor i Corian® och Staron
+            &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Om Aros Snickeri -->
+    <section class="about-section">
+      <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos">
+
+      <div class="about-text">
+        <h2>Aros Snickeri</h2>
+        <p>Vi arbetar med beställningssnickerier inom byggnadssnickerier, offentlig miljö samt platsanpassad inredning
+          såsom trappor, receptionsdiskar, bänkskivor, bokhyllor och möbler.</p>
+        <p>Vi har en toppmodern och välutrustad maskinpark med bland annat datorstyrda maskiner, vilket öppnar upp
+          möjligheten för att tillverka större serier.</p>
+        <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar
+          alla
+          våra snickerier.</p>
+        <a href="html/om-oss.html" class="read-more">Mer om oss &rarr;</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <h2>Kontakt</h2>
+          <!-- Adress -->
+          <h3>Aros Snickeri AB</h3>
+          <p>Anna Fabrisgata 12a<br>
+            754 54 Uppsala</p>
+
+          <!-- Telefon & Mail -->
+          <div class="footer-contact">
+            <img src="../img/svg/phone.svg" alt="Telefon">
+            <a href="tel:018100180">018-100 180</a>
+          </div>
+          <div class="footer-contact">
+            <img src="../img/svg/mail.svg" alt="E-post">
+            <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
+          </div>
+
+          <!-- Öppettider -->
+          <h3>Öppetider</h3>
+          <p>Måndag - Fredag 07.00 - 16.00<br>
+            Lunchstängt 11.00 - 11.45</p>
+
+          <!-- Karta och vägbeskrivning -->
+          <div class="footer-contact">
+            <a href="https://www.google.com/maps/search/?api=1&query=Aros+Snickeri+AB,+Anna+Fabris+gata+12a,+754+54+Uppsala"
+              target="_blank" rel="noopener noreferrer">Karta och vägbeskrivning</a>
+            <img src="../img/svg/map-pin.svg" alt="Karta">
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <h2>Om oss</h2>
+          <nav class="navigation footer-nav">
+            <ul>
+              <li><a href="om-oss.html">Om oss</a></li>
+              <li><a href="vad-vi-gor.html">Snickeri och maskinpark</a></li>
+              <li><a href="../pages/kontakt.html">Kontakt</a></li>
+            </ul>
+          </nav>
         </div>
       </div>
 
-      <div class="footer-right">
-        <h2>Om oss</h2>
-        <nav class="navigation footer-nav">
-          <ul>
-            <li><a href="om-oss.html">Om oss</a></li>
-            <li><a href="vad-vi-gor.html">Snickeri och maskinpark</a></li>
-            <li><a href="../pages/kontakt.html">Kontakt</a></li>
-          </ul>
-        </nav>
+      <div class="footer-bottom">
+        <p>© Aros Snickeri AB - Specialsnickeriet i Uppsala</p>
       </div>
-    </div>
+    </footer>
 
-    <div class="footer-bottom">
-      <p>© Aros Snickeri AB - Specialsnickeriet i Uppsala</p>
-    </div>
-  </footer>
+    <button id="backToTop" aria-label="Scroll to top" title="Scroll to top">
+      <img src="img/svg/arrow-up.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
+    </button>
 
-  <button id="backToTop" aria-label="Scroll to top" title="Scroll to top">
-    <img src="img/svg/arrow-up.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
-  </button>
-
-  <script type="module" src="scr/main.js"></script>
-</body>
+    <script type="module" src="scr/main.js"></script>
+  </body>
 
 </html>
