@@ -13,48 +13,6 @@
   align-items: flex-start;
 }
 
-/* --- SIDEBAR --- */
-.sidebar {
-  flex: 0 0 250px;
-  position: sticky;
-  top: 20px;
-  align-self: flex-start;
-}
-
-.sidebar-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav li {
-  margin-bottom: 2px;
-}
-
-.sidebar-nav a {
-  display: block;
-  padding: 12px 20px;
-  text-decoration: none;
-  color: #c7081b;
-  font-size: 1rem;
-  font-weight: 500;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
-  background-color: #fff;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-  background-color: #f8f8f8;
-  border-left-color: #c7081b;
-  padding-left: 25px;
-}
-
-.sidebar-nav a.active {
-  font-weight: 700;
-  background-color: #fff8f8;
-}
-
 /* --- MAIN CONTENT AREA --- */
 .services-content {
   flex: 1;
@@ -167,11 +125,6 @@
     flex: 0 0 200px;
   }
 
-  .sidebar-nav a {
-    font-size: 0.95rem;
-    padding: 10px 15px;
-  }
-
   .services-header h1 {
     font-size: 2.2rem;
   }
@@ -218,21 +171,6 @@
     margin-bottom: 0;
   }
 
-  .sidebar-nav a {
-    border-left: none;
-    border-bottom: 3px solid transparent;
-    padding: 12px 15px;
-    border-radius: 4px;
-    text-align: center;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 15px;
-    border-left: none;
-    border-bottom-color: #c7081b;
-  }
-
   .service-item {
     flex-direction: column;
     gap: 20px;
@@ -272,20 +210,6 @@
   .sidebar-nav ul {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-
-  .sidebar-nav a {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-    padding: 12px 15px;
-    text-align: left;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    border-left-color: #c7081b;
-    border-bottom: none;
-    padding-left: 20px;
   }
 
   .services-header {
@@ -328,16 +252,6 @@
     margin-bottom: 20px;
   }
 
-  .sidebar-nav a {
-    font-size: 0.9rem;
-    padding: 10px 12px;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 17px;
-  }
-
   .services-header h1 {
     font-size: 1.8rem;
   }
@@ -375,15 +289,5 @@
 
   .service-image img {
     height: 200px;
-  }
-
-  .sidebar-nav a {
-    font-size: 0.85rem;
-    padding: 8px 10px;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 15px;
   }
 }

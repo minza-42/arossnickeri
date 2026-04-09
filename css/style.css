@@ -1,10 +1,21 @@
 /* ==========================================
    AROS SNICKERI - BASE STYLES
-   Header, Footer, Startsida
    ========================================== */
 
 /* --- IMPORT GOOGLE FONTS --- */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap");
+
+/* --- CSS VARIABLER --- */
+:root {
+  --primary-red: #c7081b;
+  --hover-red: #a00616;
+  --accent-red: #e63946;
+  --text-dark: #333;
+  --text-gray: #666;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
 
 /* --- GENERAL RESET & BASE --- */
 * {
@@ -17,6 +28,63 @@ body {
   font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: 300;
   overflow-x: hidden;
+  color: var(--text-dark);
+  background-color: var(--white);
+}
+
+/* =============================
+   GLOBAL FORM STYLES
+   ============================= */
+
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  color: #c7081b;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-family: "Lato", "Arial", "Helvetica", sans-serif;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #d0d0d0;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #c7081b;
+  box-shadow: 0 0 0 4px rgba(199, 8, 27, 0.08);
+  transform: translateY(-1px);
+}
+
+/* --- GLOBAL COMPONENTS --- */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+  border-radius: 2px;
+  margin: 0 auto 30px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  color: var(--text-dark);
 }
 
 h1,
@@ -27,7 +95,7 @@ h5,
 h6 {
   font-family: "Playfair Display", serif;
   font-weight: 700;
-  color: #333;
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
@@ -499,6 +567,76 @@ h6 {
   color: #a00616;
 }
 
+/* --- SHARED SIDEBAR COMPONENT --- */
+.sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--primary-red); /* Vi använder variabeln från förra steget! */
+  font-size: 1rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  background-color: var(--white);
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: #f8f8f8;
+  border-left-color: var(--primary-red);
+  padding-left: 25px;
+}
+
+.sidebar-nav a.active {
+  font-weight: 700;
+  background-color: #fff8f8;
+}
+
+/* Gemensam responsivitet för Sidebar (Tablet Portrait) */
+@media screen and (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin-bottom: 30px;
+  }
+
+  .sidebar-nav ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .sidebar-nav a {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    padding-left: 15px;
+    border-bottom-color: var(--primary-red);
+  }
+}
+
 /* --- 7. FOOTER --- */
 footer {
   background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
@@ -568,6 +706,7 @@ footer p {
   margin-bottom: 8px;
   line-height: 1.7;
   font-size: 0.95rem;
+  letter-spacing: 1px;
 }
 
 .footer-contact {

@@ -25,19 +25,46 @@
    Staplar om about-section och justerar loggor/footer
 */
 
+/* --- Mellanstora skärmar (max 900px) --- */
 @media (max-width: 900px) {
+  /* Gemensam layout-ändring för sidor med sidebar */
+  .service-detail-layout,
+  .services-layout {
+    flex-direction: column;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
   .about-section {
     flex-direction: column;
     gap: 30px;
     padding: 40px 10px;
   }
-  .client-logos {
-    width: 100%;
-    max-width: 350px;
-  }
   .footer-content {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+}
+
+/* --- Mobiler (max 768px) --- */
+@media (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Gör alla "grid-kolumner" till en kolumn */
+  .links-grid,
+  .content-grid,
+  .two-column {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Justera knappar för tumvänlighet */
+  .btn,
+  .read-more {
+    width: 100%;
+    text-align: center;
   }
 }
 

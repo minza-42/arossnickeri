@@ -34,7 +34,6 @@
     opacity: 0;
     transform: translateY(28px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -73,7 +72,7 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background-color: #c7081b;
+  background-color: var(--primary-red);
   color: #fff;
   text-decoration: none;
   font-weight: 700;
@@ -82,15 +81,12 @@
   text-transform: uppercase;
   padding: 14px 30px;
   border-radius: 3px;
-  transition:
-    background 0.25s,
-    transform 0.25s,
-    box-shadow 0.25s;
+  transition: all 0.25s;
   box-shadow: 0 4px 16px rgba(199, 8, 27, 0.38);
 }
 
 .hero-cta:hover {
-  background-color: #a00616;
+  background-color: var(--hover-red);
   transform: translateY(-2px);
   box-shadow: 0 6px 22px rgba(199, 8, 27, 0.45);
 }
@@ -104,12 +100,7 @@
   transform: translateX(5px);
 }
 
-/* Slide-knappar ovanför overlay */
-.slideshow-container .slide-btn {
-  z-index: 4;
-}
-
-/* --- SPECIALTY SECTION: snyggare rubrik --- */
+/* --- SPECIALTY SECTION --- */
 .specialty-section {
   text-align: center;
   padding: 70px 40px 60px;
@@ -121,7 +112,7 @@
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #c7081b;
+  color: var(--primary-red);
   margin-bottom: 14px;
   position: relative;
 }
@@ -132,23 +123,13 @@
   display: inline-block;
   width: 30px;
   height: 1px;
-  background: #c7081b;
+  background: var(--primary-red);
   vertical-align: middle;
   margin: 0 10px;
   opacity: 0.6;
 }
 
-.specialty-section h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  margin-bottom: 16px;
-}
-
-.specialty-section > p {
-  max-width: 600px;
-  margin: 0 auto 50px;
-}
-
-/* --- INFO CARDS: hover-effekter och border-top --- */
+/* --- INFO CARDS --- */
 .info-section {
   gap: 30px;
   padding: 0 40px 60px;
@@ -158,16 +139,19 @@
   background: #fff;
   border-radius: 6px;
   padding: 36px 28px 30px;
-  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--shadow);
   border-top: 3px solid transparent;
-  transition:
-    border-color 0.3s,
-    transform 0.3s,
-    box-shadow 0.3s;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
 }
 
 .info-section .column:hover {
-  border-top-color: #c7081b;
+  border-top-color: var(--primary-red);
   transform: translateY(-5px);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11);
 }
@@ -182,44 +166,9 @@
   transform: scale(1.12) rotate(-4deg);
 }
 
-.info-section h3 {
-  font-size: 1.25rem;
-  width: auto;
-  min-width: unset;
-}
-
-.info-section a.read-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: #c7081b;
-  border-bottom: 2px solid transparent;
-  transition:
-    border-color 0.25s,
-    gap 0.25s;
-  padding-bottom: 2px;
-}
-
-.info-section a.read-more:hover {
-  border-bottom-color: #c7081b;
-  gap: 10px;
-}
-
-/* --- PRODUCT / SPECIALTY highlight: subtil bakgrundsrand --- */
-.specialty-section {
-  background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%);
-}
-
-/* --- ABOUT SECTION: bättre balans --- */
+/* --- ABOUT SECTION IMPROVEMENTS --- */
 .about-section {
-  background: linear-gradient(135deg, #f5f5f5 0%, #ececec 100%);
-  border-radius: 8px;
   position: relative;
-  overflow: hidden;
 }
 
 .about-section::before {
@@ -229,7 +178,11 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #c7081b 0%, #e63946 100%);
+  background: linear-gradient(
+    180deg,
+    var(--primary-red) 0%,
+    var(--accent-red) 100%
+  );
   border-radius: 4px 0 0 4px;
 }
 
@@ -237,7 +190,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #c7081b;
+  background: var(--primary-red);
   color: #fff;
   padding: 12px 26px;
   border-radius: 3px;
@@ -246,39 +199,16 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
-  transition:
-    background 0.25s,
-    transform 0.25s;
+  transition: all 0.25s;
   margin-top: 8px;
 }
 
 .about-text .read-more:hover {
-  background: #a00616;
+  background: var(--hover-red);
   transform: translateY(-2px);
 }
 
-/* --- DIVIDER MELLAN SEKTIONER --- */
-.section-divider {
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, #c7081b, #e63946);
-  border-radius: 2px;
-  margin: 0 auto 30px;
-}
-
-/* --- FOOTER: lägg till liten topp-accent --- */
-footer {
-  position: relative;
-}
-
-footer::before {
-  content: "";
-  display: block;
-  height: 4px;
-  background: linear-gradient(90deg, #c7081b 0%, #e63946 50%, #c7081b 100%);
-}
-
-/* Mobil-anpassningar för hero overlay */
+/* --- RESPONSIVE ADJUSTMENTS --- */
 @media screen and (max-width: 768px) {
   .hero-overlay {
     padding: 0 20px 35px;
@@ -291,34 +221,11 @@ footer::before {
     );
   }
 
-  .hero-text {
-    max-width: 100%;
-  }
-
   .hero-text h1 {
     font-size: 1.6rem;
   }
 
   .hero-text p {
     display: none;
-  }
-
-  .info-section {
-    padding: 0 15px 40px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .hero-overlay {
-    padding: 0 15px 25px;
-  }
-
-  .hero-text h1 {
-    font-size: 1.35rem;
-  }
-
-  .hero-cta {
-    padding: 11px 22px;
-    font-size: 0.85rem;
   }
 }
