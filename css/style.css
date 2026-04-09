@@ -360,16 +360,33 @@ h6 {
 /* --- 6. INFO SECTION --- */
 .info-section {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   max-width: 1400px;
   margin: 50px auto;
-  padding: 50px 40px;
   align-items: stretch;
 }
 
 .info-section .read-more {
   font-family: "Playfair Display", serif;
   font-weight: 700;
+  background: none;
+  border: 2px solid var(--primary-red);
+  padding: 8px 22px;
+  border-radius: 24px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+  color: var(--primary-red);
+  position: relative;
+  z-index: 1;
+}
+
+.info-section .read-more:hover {
+  color: #fff !important;
+  background: var(--primary-red) !important;
+  border-color: var(--primary-red) !important;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(199, 8, 27, 0.1);
 }
 
 .info-section .column {
@@ -381,7 +398,6 @@ h6 {
 }
 
 .info-section .icon {
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -409,6 +425,7 @@ h6 {
   margin-bottom: 20px;
   text-align: center;
   flex-grow: 1;
+  font-weight: 300 !important;
 }
 
 .info-section a {
@@ -521,6 +538,18 @@ h6 {
   gap: 60px;
 }
 
+.about-section-home {
+  max-width: 1400px;
+  margin: 80px auto 60px;
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
 .client-logos {
   flex: 0 0 45%;
   width: 45%;
@@ -560,11 +589,20 @@ h6 {
   font-size: 1.1rem;
   display: inline-block;
   margin-top: 10px;
-  transition: color 0.3s;
+  border: 2px solid #c7081b;
+  border-radius: 24px;
+  padding: 8px 22px;
+  background: none;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border 0.3s;
 }
 
 .about-text .read-more:hover {
-  color: #a00616;
+  color: #fff;
+  background: #c7081b;
+  border-color: #c7081b;
 }
 
 /* --- SHARED SIDEBAR COMPONENT --- */
