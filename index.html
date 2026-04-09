@@ -6,9 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aros Snickeri</title>
   <link rel="icon" type="image/png" href="aros-snickeri.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/startpage.css">
-  <link rel="stylesheet" href="css/responsive.css">
+
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="css/startpage.min.css">
+  <link rel="stylesheet" href="css/responsive.min.css">
+
+  <!-- Preload hero-bild för LCP-optimering -->
+  <link rel="preload" as="image" href="img/background.webp">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,7 +38,7 @@
 
       <div class="logo-container">
         <a href="index.html" title="Hem" aria-label="Aros Snickeri Startsida">
-          <img src="img/arossnickeri-logo.webp" alt="Aros Snickeri Logotyp">
+          <img src="img/arossnickeri-logo.webp" alt="Aros Snickeri Logotyp" width="180" height="100">
         </a>
       </div>
 
@@ -70,8 +74,8 @@
   <!-- Hero med overlay-text -->
   <section class="hero-section">
     <div class="slideshow-container">
-      <img src="img/background.webp" class="slide active" alt="Miljöbild 1">
-      <img src="img/resturant-counter.webp" class="slide" alt="Miljöbild 2">
+      <img src="img/background.webp" class="slide active" alt="Miljöbild 1" width="1400" height="500">
+      <img src="img/resturant-counter.webp" class="slide" alt="Miljöbild 2" width="1400" height="500">
 
     </div>
 
@@ -90,7 +94,7 @@
 
   <!-- Specialsnickeriet -->
   <section class="specialty-section">
-    <span class="section-label">Vad vi erbjuder</span>
+    <span class="section-label">Aros Snickeri</span>
     <h2>Specialsnickeriet i Uppsala</h2>
     <div class="section-divider"></div>
     <p>Vi är specialister på inredningar till offentliga miljöer och företag.</p>
@@ -99,7 +103,7 @@
   <!-- Info Section -->
   <section class="info-section">
     <a class="column column-link" href="html/vad-vi-gor.html">
-      <div class="icon"><img src="img/svg/trolley.svg" alt="Varukorg"></div>
+      <div class="icon"><img src="img/svg/trolley.svg" alt="Varukorg" width="80" height="80"></div>
       <h3>Produkter</h3>
       <p>
         Aros Snickeri tillverkar platsanpassade inredningar och möbler för företag,
@@ -111,7 +115,7 @@
     </a>
 
     <a class="column column-link" href="html/om-oss.html">
-      <div class="icon"><img src="img/svg/hardware.svg" alt="Globe"></div>
+      <div class="icon"><img src="img/svg/hardware.svg" alt="Globe" width="80" height="80"></div>
       <h3>Om Aros Snickeri</h3>
       <p>
         Aros Snickeri har byggt unika möbler och inredningar i över 35 år.
@@ -125,7 +129,7 @@
 
   <!-- Om Aros Snickeri -->
   <section class="about-section-home">
-    <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos">
+    <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos" width="500" height="120">
 
     <div class="about-text">
       <h2>Aros Snickeri</h2>
@@ -148,11 +152,11 @@
         <p>Anna Fabrisgata 12a<br>754 54 Uppsala</p>
 
         <div class="footer-contact">
-          <img src="../img/svg/phone.svg" alt="Telefon">
+          <img src="../img/svg/phone.svg" alt="Telefon" width="18" height="18">
           <a href="tel:018100180">018-100 180</a>
         </div>
         <div class="footer-contact">
-          <img src="../img/svg/mail.svg" alt="E-post">
+          <img src="../img/svg/mail.svg" alt="E-post" width="18" height="18">
           <a href="mailto:info@arossnickeri.se">info@arossnickeri.se</a>
         </div>
 
@@ -162,7 +166,7 @@
         <div class="footer-contact">
           <a href="https://www.google.com/maps/search/?api=1&query=Aros+Snickeri+AB,+Anna+Fabris+gata+12a,+754+54+Uppsala"
             target="_blank" rel="noopener noreferrer">Karta och vägbeskrivning</a>
-          <img src="../img/svg/map-pin.svg" alt="Karta">
+          <img src="../img/svg/map-pin.svg" alt="Karta" width="18" height="18">
         </div>
       </div>
 
@@ -187,9 +191,9 @@
     <img src="img/svg/arrow-up.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
   </button>
 
-  <script src="scr/scrollToTop.js"></script>
-  <script src="scr/header.js"></script>
-  <script src="scr/main.js"></script>
+  <script src="scr/scrollToTop.min.js" defer></script>
+  <script src="scr/header.min.js" defer></script>
+  <script src="scr/main.min.js" defer></script>
 </body>
 
 </html>
