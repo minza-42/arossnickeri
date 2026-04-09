@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Visa knappen när man scrollar ner
   window.addEventListener("scroll", function () {
     if (window.scrollY > 200) {
-      btn.style.display = "block";
+      btn.classList.add("show");
     } else {
-      btn.style.display = "none";
+      btn.classList.remove("show");
     }
   });
 
@@ -20,5 +20,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Startläge: dold
-  btn.style.display = "none";
+  btn.classList.remove("show");
 });

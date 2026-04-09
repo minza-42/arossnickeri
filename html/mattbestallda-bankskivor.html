@@ -1,3 +1,8 @@
+<button id="backToTop" aria-label="Scroll to top" title="Scroll to top">
+  <img src="../img/svg/arrow-up.svg" alt="Scroll to top" width="28" height="28" style="pointer-events:none;" />
+</button>
+
+<script src="../scr/scrollToTop.js"></script>
 <!DOCTYPE html>
 <html lang="sv">
 
@@ -70,7 +75,7 @@
   <!-- Main Content with Sidebar -->
   <main class="service-detail-layout">
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation (desktop) -->
     <aside class="sidebar">
       <nav class="sidebar-nav">
         <ul>
@@ -85,12 +90,30 @@
       </nav>
     </aside>
 
+    <!-- Sidebar Hamburger Menu (mobile) -->
+    <button class="sidebar-menu-toggle" aria-label="Öppna sidomeny" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <nav class="sidebar-mobile-navigation" aria-label="Sidonavigation mobil" hidden>
+      <ul>
+        <li><a href="offentliga-miljoer.html">Offentlig miljö</a></li>
+        <li><a href="byggnadssnickerier.html">Byggnadssnickerier</a></li>
+        <li><a href="specialbyggda-mobler.html">Specialbyggda möbler</a></li>
+        <li><a href="mattbestallda-bankskivor.html" class="active">Måttbeställda bänkskivor</a></li>
+        <li><a href="inomhustrappor.html">Inomhustrappor</a></li>
+        <li><a href="platsbyggda-bokhyllor.html">Platsbyggda bokhyllor</a></li>
+        <li><a href="mobeltorrt-snickerivirke.html">Möbeltorrt snickerivirke</a></li>
+      </ul>
+    </nav>
+
     <!-- Main Content Area -->
     <div class="service-detail-content">
 
       <!-- Hero Image -->
       <div class="detail-hero">
-        <img src="../img/mattbestallda-header.webp" alt="Måttbeställda bänkskivor i Corian och Staron">
+        <img src="../img/verktyg-header.webp" alt="Måttbeställda bänkskivor i Corian och Staron">
       </div>
 
       <!-- Main Content -->
@@ -238,6 +261,7 @@
   </button>
 
   <script src="../scr/header.js"></script>
+  <script src="../scr/scrollToTop.js"></script>
   <script type="module" src="../scr/main.js"></script>
 </body>
 

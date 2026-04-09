@@ -70,7 +70,7 @@
   <!-- Main Content with Sidebar -->
   <main class="services-layout">
 
-    <!-- Sidebar Navigation -->
+    <!-- Sidebar Navigation (desktop) -->
     <aside class="sidebar">
       <nav class="sidebar-nav">
         <ul>
@@ -84,6 +84,24 @@
         </ul>
       </nav>
     </aside>
+
+    <!-- Sidebar Hamburger Menu (mobile) -->
+    <button class="sidebar-menu-toggle" aria-label="Öppna sidomeny" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    <nav class="sidebar-mobile-navigation" aria-label="Sidonavigation mobil" hidden>
+      <ul>
+        <li><a href="offentliga-miljoer.html">Offentlig miljö</a></li>
+        <li><a href="byggnadssnickerier.html">Byggnadssnickerier</a></li>
+        <li><a href="specialbyggda-mobler.html">Specialbyggda möbler</a></li>
+        <li><a href="mattbestallda-bankskivor.html">Måttbeställda bänkskivor</a></li>
+        <li><a href="inomhustrappor.html">Inomhustrappor</a></li>
+        <li><a href="platsbyggda-bokhyllor.html">Platsbyggda bokhyllor</a></li>
+        <li><a href="mobeltorrt-snickerivirke.html">Möbeltorrt snickerivirke</a></li>
+      </ul>
+    </nav>
 
     <!-- Main Content Area -->
     <div class="services-content">
@@ -101,7 +119,9 @@
       <!-- Service: Offentliga miljöer -->
       <section id="offentliga-miljoer" class="service-item">
         <div class="service-image">
-          <img src="../img/offentlig.jpg" alt="Offentliga miljöer - Receptionist">
+          <a href="offentliga-miljoer.html">
+            <img src="../img/offentliga-miljö.webp" alt="Offentliga miljöer - Receptionist">
+          </a>
         </div>
         <div class="service-text">
           <h2>Offentliga miljöer</h2>
@@ -117,7 +137,9 @@
       <!-- Service: Byggnadssnickerier -->
       <section id="byggnadssnickerier" class="service-item">
         <div class="service-image">
-          <img src="../img/services/byggnadssnickerier.webp" alt="Byggnadssnickerier - Fönster och dörrar">
+          <a href="byggnadssnickerier.html">
+            <img src="../img/byggnadssnickerier.webp" alt="Byggnadssnickerier - Fönster och dörrar">
+          </a>
         </div>
         <div class="service-text">
           <h2>Byggnadssnickerier</h2>
@@ -133,7 +155,9 @@
       <!-- Service: Specialbyggda möbler -->
       <section id="specialbyggda-mobler" class="service-item">
         <div class="service-image">
-          <img src="../img/services/specialbyggda-mobler.webp" alt="Specialbyggda möbler - Skräddarsytt kök">
+          <a href="specialbyggda-mobler.html">
+            <img src="../img/specialbyggda-mobler.webp" alt="Specialbyggda möbler - Skräddarsytt kök">
+          </a>
         </div>
         <div class="service-text">
           <h2>Specialbyggda möbler</h2>
@@ -149,7 +173,9 @@
       <!-- Service: Måttbeställda bänkskivor -->
       <section id="mattbestallda-bankskivor" class="service-item">
         <div class="service-image">
-          <img src="../img/services/bankskivor.webp" alt="Måttbeställda bänkskivor">
+          <a href="mattbestallda-bankskivor.html">
+            <img src="../img/verktyg-header.webp" alt="Måttbeställda bänkskivor">
+          </a>
         </div>
         <div class="service-text">
           <h2>Måttbeställda bänkskivor</h2>
@@ -165,7 +191,9 @@
       <!-- Service: Inomhustrappor -->
       <section id="inomhustrappor" class="service-item">
         <div class="service-image">
-          <img src="../img/services/inomhustrappor.webp" alt="Inomhustrappor">
+          <a href="inomhustrappor.html">
+            <img src="../img/trappor_header.webp" alt="Inomhustrappor">
+          </a>
         </div>
         <div class="service-text">
           <h2>Inomhustrappor</h2>
@@ -181,7 +209,9 @@
       <!-- Service: Platsbyggda bokhyllor -->
       <section id="platsbyggda-bokhyllor" class="service-item">
         <div class="service-image">
-          <img src="../img/bokhylla.webp" alt="Platsbyggda bokhyllor">
+          <a href="platsbyggda-bokhyllor.html">
+            <img src="../img/bokhylla-header.webp" alt="Platsbyggda bokhyllor">
+          </a>
         </div>
         <div class="service-text">
           <h2>Platsbyggda bokhyllor</h2>
@@ -197,7 +227,9 @@
       <!-- Service: Möbeltorrt virke -->
       <section id="mobeltorrt-snickerivirke" class="service-item">
         <div class="service-image">
-          <img src="../img/virke.webp" alt="Möbeltorrt snickerivirke">
+          <a href="mobeltorrt-snickerivirke.html">
+            <img src="../img/virke-header.webp" alt="Möbeltorrt snickerivirke">
+          </a>
         </div>
         <div class="service-text">
           <h2>Möbeltorrt virke</h2>
@@ -269,6 +301,7 @@
   </button>
 
   <script src="../scr/header.js"></script>
+  <script src="../scr/scrollToTop.js"></script>
   <script type="module" src="../scr/main.js"></script>
 </body>
 

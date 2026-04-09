@@ -635,6 +635,36 @@ h6 {
   background-color: #fff8f8;
 }
 
+/* --- SCROLL TO TOP BUTTON --- */
+#backToTop {
+  position: fixed;
+  right: 24px;
+  bottom: 32px;
+  z-index: 1200;
+  background: #fff;
+  border: 2px solid #c7081b;
+  border-radius: 50%;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.13);
+  padding: 10px;
+  cursor: pointer;
+  display: none;
+  transition:
+    opacity 0.3s,
+    background 0.3s,
+    border 0.3s;
+  opacity: 0.95;
+}
+#backToTop:hover {
+  background: #fff8f8;
+  border-color: #a00616;
+  opacity: 1;
+}
+#backToTop img {
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+}
+
 /* Gemensam responsivitet för Sidebar (Tablet Portrait) */
 @media screen and (max-width: 900px) {
   .sidebar {
@@ -861,7 +891,7 @@ footer p {
 }
 
 #backToTop.show {
-  display: flex;
+  display: flex !important;
 }
 
 /* --- 9. RESPONSIVE DESIGN --- */

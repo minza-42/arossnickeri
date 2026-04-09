@@ -16,6 +16,43 @@ class HeaderManager {
     this.setupScrollEffect();
     this.setupMobileMenu();
     this.setupActiveNavigation();
+    this.setupSidebarMobileMenu();
+  }
+  // Sidonavigation hamburgermeny (mobil)
+  setupSidebarMobileMenu() {
+    const sidebarMenuToggle = document.querySelector(".sidebar-menu-toggle");
+    const sidebarMobileNav = document.querySelector(
+      ".sidebar-mobile-navigation",
+    );
+    if (!sidebarMenuToggle || !sidebarMobileNav) return;
+
+    sidebarMenuToggle.addEventListener("click", () => {
+      const expanded =
+        sidebarMenuToggle.getAttribute("aria-expanded") === "true";
+      sidebarMenuToggle.setAttribute("aria-expanded", !expanded);
+      if (sidebarMobileNav.hasAttribute("hidden")) {
+        sidebarMobileNav.removeAttribute("hidden");
+      } else {
+        sidebarMobileNav.setAttribute("hidden", "");
+      }
+    });
+
+    // Stäng menyn när man klickar på en länk
+    const sidebarLinks = sidebarMobileNav.querySelectorAll("a");
+    sidebarLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        sidebarMobileNav.setAttribute("hidden", "");
+        sidebarMenuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    // Stäng menyn med Escape-tangenten
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !sidebarMobileNav.hasAttribute("hidden")) {
+        sidebarMobileNav.setAttribute("hidden", "");
+        sidebarMenuToggle.setAttribute("aria-expanded", "false");
+      }
+    });
   }
 
   // Lägg till skugga på header vid scroll

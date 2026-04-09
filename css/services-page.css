@@ -105,6 +105,102 @@
   color: #a00616;
 }
 
+/* --- SIDEBAR HAMBURGER MENU (MOBILE) --- */
+.sidebar-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  position: fixed;
+  right: 18px;
+  top: 120px;
+  z-index: 1002;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.sidebar-menu-toggle .hamburger-line {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background-color: #c7081b;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebar-menu-toggle {
+    display: flex;
+  }
+  .sidebar-mobile-navigation[hidden] {
+    display: none;
+  }
+  .sidebar-mobile-navigation {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 70px;
+    width: 80vw;
+    max-width: 320px;
+    background: #fff;
+    box-shadow: -2px 0 16px rgba(0, 0, 0, 0.13);
+    border-radius: 8px 0 0 8px;
+    z-index: 1001;
+    padding: 30px 0 20px 0;
+    animation: sidebarSlideIn 0.25s;
+  }
+  .sidebar-mobile-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sidebar-mobile-navigation li {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .sidebar-mobile-navigation li:last-child {
+    border-bottom: none;
+  }
+  .sidebar-mobile-navigation a {
+    display: block;
+    padding: 14px 0;
+    color: #c7081b;
+    font-weight: 600;
+    font-size: 1.08rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition:
+      background 0.2s,
+      color 0.2s,
+      padding-left 0.2s;
+  }
+  .sidebar-mobile-navigation a:hover {
+    background: #fff8f8;
+    color: #a00616;
+    padding-left: 10px;
+  }
+}
+
+@keyframes sidebarSlideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 /* --- RESPONSIVE DESIGN --- */
 
 /* Large Desktop */

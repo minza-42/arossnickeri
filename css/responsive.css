@@ -1,33 +1,3 @@
-/* Gör loggan större när hamburgarmenyn är öppen */
-@media (max-width: 900px) {
-  .mobile-navigation:not([hidden]) ~ .logo-container img,
-  .main-header .logo-container img {
-    height: 80px !important;
-    max-width: 220px;
-    transition: height 0.3s;
-  }
-}
-/* Dölj kontaktinfo i headern på små skärmar */
-@media (max-width: 900px) {
-  .contact-info {
-    display: none;
-  }
-}
-/* --- Visa hamburgarmeny och mobilmeny på små skärmar --- */
-@media (max-width: 900px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  .navigation {
-    display: none;
-  }
-  .mobile-navigation[hidden] {
-    display: none;
-  }
-  .mobile-navigation:not([hidden]) {
-    display: block;
-  }
-}
 /* ==========================================
   RESPONSIVE DESIGN FÖR AROS SNICKERI
   Här ligger alla media queries för olika skärmstorlekar
@@ -101,22 +71,15 @@
 /* --- MOBILANPASSNING FÖR HERO --- */
 @media screen and (max-width: 768px) {
   .hero-section {
-    /* Vi sätter en fast minimihöjd så bilderna inte blir för små på höjden */
     height: 80vh;
     min-height: 450px;
   }
 
   .hero-overlay {
     padding: 20px;
-    align-items: center; /* Centrerar texten vertikalt på mobilen */
-    justify-content: center;
-    text-align: center;
-    /* En mörkare gradient som täcker hela ytan för bättre kontrast */
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.4) 0%,
-      rgba(0, 0, 0, 0.7) 100%
-    );
+    align-items: left; /* Centrerar texten vertikalt på mobilen */
+    justify-content: left;
+    text-align: left;
   }
 
   .hero-text {
@@ -226,5 +189,49 @@
   .footer-bottom {
     font-size: 0.8rem;
     padding: 10px 0;
+  }
+}
+
+/* Säkerställ att scroll-to-top-knappen alltid syns på små skärmar */
+@media (max-width: 900px) {
+  #backToTop.show {
+    display: flex !important;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    z-index: 2000;
+  }
+}
+
+/* Gör loggan större när hamburgarmenyn är öppen */
+@media (max-width: 900px) {
+  .mobile-navigation:not([hidden]) ~ .logo-container img,
+  .main-header .logo-container img {
+    height: 80px !important;
+    max-width: 220px;
+    transition: height 0.3s;
+  }
+}
+/* Dölj kontaktinfo i headern på små skärmar */
+@media (max-width: 900px) {
+  .contact-info {
+    display: none;
+  }
+}
+/* --- Visa hamburgarmeny och mobilmeny på små skärmar --- */
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  .navigation {
+    display: none;
+  }
+  .mobile-navigation[hidden] {
+    display: none;
+  }
+  .mobile-navigation:not([hidden]) {
+    display: block;
   }
 }
