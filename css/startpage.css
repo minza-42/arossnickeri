@@ -1,0 +1,231 @@
+/* ============================================================
+   FÖRBÄTTRINGAR FÖR STARTSIDAN
+   ============================================================ */
+
+/* --- HERO: overlay-text ovanpå bildspelet --- */
+.hero-section {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.62) 0%,
+    rgba(0, 0, 0, 0.28) 55%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  padding: 0 0 60px 70px;
+}
+
+.hero-text {
+  max-width: 560px;
+  animation: heroFadeUp 0.9s cubic-bezier(0.22, 0.68, 0, 1.2) both;
+}
+
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-text .tagline {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.hero-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-text p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  margin-bottom: 28px;
+  font-weight: 300;
+}
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--primary-red);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 30px;
+  border-radius: 3px;
+  transition: all 0.25s;
+  box-shadow: 0 4px 16px rgba(199, 8, 27, 0.38);
+}
+
+.hero-cta:hover {
+  background-color: var(--hover-red);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(199, 8, 27, 0.45);
+}
+
+.hero-cta .arrow {
+  font-size: 1.1rem;
+  transition: transform 0.25s;
+}
+
+.hero-cta:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* --- SPECIALTY SECTION --- */
+.specialty-section {
+  text-align: center;
+  padding: 70px 40px 60px;
+}
+
+.specialty-section .section-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary-red);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.specialty-section .section-label::before,
+.specialty-section .section-label::after {
+  content: "";
+  display: inline-block;
+  width: 30px;
+  height: 1px;
+  background: var(--primary-red);
+  vertical-align: middle;
+  margin: 0 10px;
+  opacity: 0.6;
+}
+
+/* --- INFO CARDS --- */
+.info-section {
+  gap: 30px;
+  padding: 0 40px 60px;
+}
+
+.info-section .column {
+  background: #fff;
+  border-radius: 6px;
+  padding: 36px 28px 30px;
+  box-shadow: var(--shadow);
+  border-top: 3px solid transparent;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.info-section .column:hover {
+  border-top-color: var(--primary-red);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11);
+}
+
+.info-section .icon img {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.35s;
+}
+
+.info-section .column:hover .icon img {
+  transform: scale(1.12) rotate(-4deg);
+}
+
+/* --- ABOUT SECTION IMPROVEMENTS --- */
+.about-section {
+  position: relative;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--primary-red) 0%,
+    var(--accent-red) 100%
+  );
+  border-radius: 4px 0 0 4px;
+}
+
+.about-text .read-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--primary-red);
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.25s;
+  margin-top: 8px;
+}
+
+.about-text .read-more:hover {
+  background: var(--hover-red);
+  transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media screen and (max-width: 768px) {
+  .hero-overlay {
+    padding: 0 20px 35px;
+    align-items: flex-end;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.2) 60%,
+      transparent 100%
+    );
+  }
+
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    display: none;
+  }
+}

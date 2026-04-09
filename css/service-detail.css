@@ -13,48 +13,6 @@
   align-items: flex-start;
 }
 
-/* --- SIDEBAR --- */
-.sidebar {
-  flex: 0 0 250px;
-  position: sticky;
-  top: 20px;
-  align-self: flex-start;
-}
-
-.sidebar-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.sidebar-nav li {
-  margin-bottom: 2px;
-}
-
-.sidebar-nav a {
-  display: block;
-  padding: 12px 20px;
-  text-decoration: none;
-  color: #c7081b;
-  font-size: 1rem;
-  font-weight: 500;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
-  background-color: #fff;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-  background-color: #f8f8f8;
-  border-left-color: #c7081b;
-  padding-left: 25px;
-}
-
-.sidebar-nav a.active {
-  font-weight: 700;
-  background-color: #fff8f8;
-}
-
 /* --- MAIN CONTENT AREA --- */
 .service-detail-content {
   flex: 1;
@@ -167,11 +125,6 @@
     flex: 0 0 200px;
   }
 
-  .sidebar-nav a {
-    font-size: 0.95rem;
-    padding: 10px 15px;
-  }
-
   .detail-hero {
     height: 300px;
   }
@@ -204,31 +157,6 @@
     margin-bottom: 30px;
   }
 
-  .sidebar-nav ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
-  }
-
-  .sidebar-nav li {
-    margin-bottom: 0;
-  }
-
-  .sidebar-nav a {
-    border-left: none;
-    border-bottom: 3px solid transparent;
-    padding: 12px 15px;
-    border-radius: 4px;
-    text-align: center;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 15px;
-    border-left: none;
-    border-bottom-color: #c7081b;
-  }
-
   .detail-hero {
     height: 280px;
   }
@@ -239,26 +167,6 @@
   .service-detail-layout {
     margin: 20px auto;
     padding: 0 15px;
-  }
-
-  .sidebar-nav ul {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .sidebar-nav a {
-    border-bottom: none;
-    border-left: 3px solid transparent;
-    padding: 12px 15px;
-    border-radius: 4px;
-    text-align: left;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    border-left-color: #c7081b;
-    border-bottom: none;
-    padding-left: 20px;
   }
 
   .detail-hero {
@@ -305,16 +213,6 @@
     margin-bottom: 20px;
   }
 
-  .sidebar-nav a {
-    font-size: 0.9rem;
-    padding: 10px 12px;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 17px;
-  }
-
   .detail-hero {
     height: 200px;
     margin-bottom: 20px;
@@ -358,15 +256,5 @@
 
   .detail-article h1 {
     font-size: 1.5rem;
-  }
-
-  .sidebar-nav a {
-    font-size: 0.85rem;
-    padding: 8px 10px;
-  }
-
-  .sidebar-nav a:hover,
-  .sidebar-nav a.active {
-    padding-left: 15px;
   }
 }

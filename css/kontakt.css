@@ -22,7 +22,7 @@
   height: 500px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow);
 }
 
 .map-container::before {
@@ -32,7 +32,12 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, #c7081b 0%, #e63946 50%, #c7081b 100%);
+  background: linear-gradient(
+    90deg,
+    var(--primary-red) 0%,
+    var(--accent-red) 50%,
+    var(--primary-red) 100%
+  );
   z-index: 1;
 }
 
@@ -296,41 +301,6 @@
   transition: color 0.3s;
 }
 
-.form-group input:focus + label,
-.form-group textarea:focus + label {
-  color: #c7081b;
-}
-
-.form-group input,
-.form-group textarea {
-  padding: 14px 16px;
-  font-size: 1rem;
-  border: 2px solid #e0e0e0;
-  border-radius: 6px;
-  font-family: "Lato", "Arial", "Helvetica", sans-serif;
-  transition: all 0.3s ease;
-  background-color: #fff;
-}
-
-.form-group input:hover,
-.form-group textarea:hover {
-  border-color: #d0d0d0;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: #c7081b;
-  box-shadow: 0 0 0 4px rgba(199, 8, 27, 0.08);
-  transform: translateY(-1px);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 140px;
-  line-height: 1.6;
-}
-
 /* --- SUBMIT BUTTON --- */
 .submit-btn {
   display: inline-flex;
@@ -446,88 +416,13 @@
 
 /* Mobile */
 @media screen and (max-width: 768px) {
-  .kontakt-layout {
-    margin: 0 10px;
-  }
-
-  .map-container {
-    height: 350px;
-  }
-
-  .map-section {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-  .kontakt-content {
-    padding: 0 15px;
-    gap: 30px;
-    margin-bottom: 40px;
-  }
-
-  .kontakt-info {
-    padding: 30px;
+  .kontakt-info,
+  .kontakt-right-inner {
+    padding: 25px;
   }
 
   .kontakt-info h2 {
-    font-size: 1.9rem;
-  }
-
-  .kontakt-info > p {
-    font-size: 1rem;
-  }
-
-  .info-item {
-    gap: 15px;
-    padding: 12px;
-    margin-bottom: 20px;
-  }
-
-  .info-item img {
-    width: 22px;
-    height: 22px;
-  }
-
-  .info-item strong,
-  .info-item a,
-  .info-item p {
-    font-size: 1rem;
-  }
-
-  .kontakt-right-inner {
-    padding: 30px;
-  }
-
-  .kontakt-form {
-    gap: 24px;
-  }
-
-  .form-group textarea {
-    min-height: 130px;
-  }
-
-  .submit-btn {
-    width: 100%;
-    padding: 15px 35px;
-  }
-
-  .social-links {
-    gap: 12px;
-  }
-
-  .social-link {
-    padding: 10px 16px;
-    font-size: 0.95rem;
-    min-width: 130px;
-  }
-
-  .social-media-section {
-    margin-top: 30px;
-    padding-top: 30px;
-  }
-
-  .social-media-section h3 {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
   }
 }
 

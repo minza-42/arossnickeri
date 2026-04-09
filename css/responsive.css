@@ -1,0 +1,137 @@
+/* ==========================================
+  RESPONSIVE DESIGN FÖR AROS SNICKERI
+  Här ligger alla media queries för olika skärmstorlekar
+  ========================================== */
+
+/* --- Stora skärmar (max 1200px) ---
+  Minskar sidmarginaler och mellanrum för breda layouter
+*/
+
+@media (max-width: 1200px) {
+  .main-header,
+  .header-wrapper,
+  .info-section,
+  .about-section,
+  .footer-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .product-highlight {
+    gap: 20px;
+  }
+}
+
+/* --- Mellanstora skärmar (max 900px) ---
+   Staplar om about-section och justerar loggor/footer
+*/
+
+/* --- Mellanstora skärmar (max 900px) --- */
+@media (max-width: 900px) {
+  /* Gemensam layout-ändring för sidor med sidebar */
+  .service-detail-layout,
+  .services-layout {
+    flex-direction: column;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .about-section {
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 10px;
+  }
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* --- Mobiler (max 768px) --- */
+@media (max-width: 768px) {
+  .header-wrapper {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  /* Gör alla "grid-kolumner" till en kolumn */
+  .links-grid,
+  .content-grid,
+  .two-column {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Justera knappar för tumvänlighet */
+  .btn,
+  .read-more {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* --- Surfplattor och små laptops (max 700px) ---
+   Gör layouten mer kompakt och staplar sektioner vertikalt
+*/
+
+@media (max-width: 700px) {
+  .main-header {
+    padding: 10px 0;
+  }
+  .header-wrapper {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 8px;
+  }
+  .logo-container img {
+    height: 60px;
+  }
+  .info-section {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 8px;
+  }
+  .specialty-section,
+  .about-section {
+    padding: 30px 8px;
+  }
+  .product-highlight {
+    flex-direction: column;
+    gap: 10px;
+    padding: 0;
+  }
+  .product-highlight img {
+    width: 100%;
+    height: 220px;
+  }
+  .product-info {
+    padding: 20px 0 20px 0;
+  }
+  .footer-content {
+    padding: 0 8px 20px;
+  }
+}
+
+/* --- Mobiler (max 500px) ---
+   Extra små marginaler och mindre text/bilder
+*/
+
+@media (max-width: 500px) {
+  .main-header {
+    padding: 4px 0;
+  }
+  .logo-container img {
+    height: 40px;
+  }
+  .info-section h3 {
+    font-size: 1.1rem;
+    min-width: unset;
+    width: 100%;
+  }
+  .specialty-section h2,
+  .about-text h2 {
+    font-size: 1.3rem;
+  }
+  .footer-bottom {
+    font-size: 0.8rem;
+    padding: 10px 0;
+  }
+}

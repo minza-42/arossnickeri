@@ -1,10 +1,21 @@
 /* ==========================================
    AROS SNICKERI - BASE STYLES
-   Header, Footer, Startsida
    ========================================== */
 
 /* --- IMPORT GOOGLE FONTS --- */
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap");
+
+/* --- CSS VARIABLER --- */
+:root {
+  --primary-red: #c7081b;
+  --hover-red: #a00616;
+  --accent-red: #e63946;
+  --text-dark: #333;
+  --text-gray: #666;
+  --bg-light: #f9f9f9;
+  --white: #ffffff;
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
 
 /* --- GENERAL RESET & BASE --- */
 * {
@@ -17,6 +28,63 @@ body {
   font-family: "Lato", Arial, Helvetica, sans-serif;
   font-weight: 300;
   overflow-x: hidden;
+  color: var(--text-dark);
+  background-color: var(--white);
+}
+
+/* =============================
+   GLOBAL FORM STYLES
+   ============================= */
+
+.form-group input:focus + label,
+.form-group textarea:focus + label {
+  color: #c7081b;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-family: "Lato", "Arial", "Helvetica", sans-serif;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #d0d0d0;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #c7081b;
+  box-shadow: 0 0 0 4px rgba(199, 8, 27, 0.08);
+  transform: translateY(-1px);
+}
+
+/* --- GLOBAL COMPONENTS --- */
+.section-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-red), var(--accent-red));
+  border-radius: 2px;
+  margin: 0 auto 30px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  color: var(--text-dark);
 }
 
 h1,
@@ -27,7 +95,7 @@ h5,
 h6 {
   font-family: "Playfair Display", serif;
   font-weight: 700;
-  color: #333;
+  color: var(--text-dark);
   line-height: 1.6;
 }
 
@@ -75,6 +143,7 @@ h6 {
   padding: 12px 18px;
   border-radius: 4px;
   transition: all 0.3s;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
 }
 
 .navigation a:hover {
@@ -291,16 +360,33 @@ h6 {
 /* --- 6. INFO SECTION --- */
 .info-section {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   max-width: 1400px;
   margin: 50px auto;
-  padding: 50px 40px;
   align-items: stretch;
 }
 
 .info-section .read-more {
   font-family: "Playfair Display", serif;
   font-weight: 700;
+  background: none;
+  border: 2px solid var(--primary-red);
+  padding: 8px 22px;
+  border-radius: 24px;
+  transition:
+    background 0.3s,
+    color 0.3s;
+  color: var(--primary-red);
+  position: relative;
+  z-index: 1;
+}
+
+.info-section .read-more:hover {
+  color: #fff !important;
+  background: var(--primary-red) !important;
+  border-color: var(--primary-red) !important;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(199, 8, 27, 0.1);
 }
 
 .info-section .column {
@@ -312,7 +398,6 @@ h6 {
 }
 
 .info-section .icon {
-  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,6 +425,7 @@ h6 {
   margin-bottom: 20px;
   text-align: center;
   flex-grow: 1;
+  font-weight: 300 !important;
 }
 
 .info-section a {
@@ -367,7 +453,7 @@ h6 {
 /* --- SPECIALTY SECTION --- */
 .specialty-section {
   max-width: 1400px;
-  margin: -50px auto 0;
+  margin: -30px auto 0;
   padding: 60px 40px;
   text-align: center;
 }
@@ -376,13 +462,11 @@ h6 {
   color: #c7081b;
   font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 15px;
 }
 
 .specialty-section > p {
   color: #666;
   font-size: 1.2rem;
-  margin-bottom: 50px;
   font-weight: 400;
 }
 
@@ -454,6 +538,18 @@ h6 {
   gap: 60px;
 }
 
+.about-section-home {
+  max-width: 1400px;
+  margin: 80px auto 60px;
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
 .client-logos {
   flex: 0 0 45%;
   width: 45%;
@@ -493,11 +589,90 @@ h6 {
   font-size: 1.1rem;
   display: inline-block;
   margin-top: 10px;
-  transition: color 0.3s;
+  border: 2px solid #c7081b;
+  border-radius: 24px;
+  padding: 8px 22px;
+  background: none;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    border 0.3s;
 }
 
 .about-text .read-more:hover {
-  color: #a00616;
+  color: #fff;
+  background: #c7081b;
+  border-color: #c7081b;
+}
+
+/* --- SHARED SIDEBAR COMPONENT --- */
+.sidebar {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+}
+
+.sidebar-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 2px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  color: var(--primary-red); /* Vi använder variabeln från förra steget! */
+  font-size: 1rem;
+  font-weight: 500;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+  background-color: var(--white);
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+  background-color: #f8f8f8;
+  border-left-color: var(--primary-red);
+  padding-left: 25px;
+}
+
+.sidebar-nav a.active {
+  font-weight: 700;
+  background-color: #fff8f8;
+}
+
+/* Gemensam responsivitet för Sidebar (Tablet Portrait) */
+@media screen and (max-width: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin-bottom: 30px;
+  }
+
+  .sidebar-nav ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+  }
+
+  .sidebar-nav a {
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+  }
+
+  .sidebar-nav a:hover,
+  .sidebar-nav a.active {
+    padding-left: 15px;
+    border-bottom-color: var(--primary-red);
+  }
 }
 
 /* --- 7. FOOTER --- */
@@ -569,6 +744,7 @@ footer p {
   margin-bottom: 8px;
   line-height: 1.7;
   font-size: 0.95rem;
+  letter-spacing: 1px;
 }
 
 .footer-contact {

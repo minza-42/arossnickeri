@@ -116,4 +116,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Export för module användning
-export default HeaderManager;
+// export default HeaderManager;
