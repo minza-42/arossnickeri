@@ -89,25 +89,5 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --- BACK TO TOP KNAPP FUNKTIONALITET ---
-  const backToTopButton = document.getElementById("backToTop");
-
-  if (backToTopButton) {
-    // Visa/dölj knappen när användaren scrollar
-    window.addEventListener("scroll", () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add("show");
-      } else {
-        backToTopButton.classList.remove("show");
-      }
-    });
-
-    // Scrolla tillbaka till toppen när knappen klickas
-    backToTopButton.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-  }
+  // ...existing code...
 });

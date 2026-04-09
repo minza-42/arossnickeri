@@ -166,66 +166,108 @@
   transform: scale(1.12) rotate(-4deg);
 }
 
-/* --- ABOUT SECTION IMPROVEMENTS --- */
-.about-section {
-  position: relative;
+/* --- ABOUT SECTION --- */
+.about-section-home {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 100px 7% 100px;
+  max-width: 1700px;
+  margin: 0 auto;
+  background-color: #fff;
 }
 
-.about-section::before {
+.about-section-home .client-logos {
+  flex: 1;
+  max-width: 500px;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+}
+
+.about-section-home:hover .client-logos {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.about-text {
+  flex: 1.2;
+}
+
+.about-text h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  color: #333;
+  margin-bottom: 25px;
+  position: relative;
+  display: inline-block;
+}
+
+/* En snygg linje under rubriken */
+.about-text h2::after {
   content: "";
   position: absolute;
-  top: 0;
+  bottom: -10px;
   left: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    var(--primary-red) 0%,
-    var(--accent-red) 100%
-  );
-  border-radius: 4px 0 0 4px;
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-red);
 }
 
+.about-text p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Anpassning av "Mer om oss"-knappen */
 .about-text .read-more {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  background: var(--primary-red);
-  color: #fff;
-  padding: 12px 26px;
-  border-radius: 3px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  gap: 10px;
+  margin-top: 15px;
+  color: var(--primary-red);
   text-decoration: none;
-  transition: all 0.25s;
-  margin-top: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  transition: gap 0.3s;
 }
 
 .about-text .read-more:hover {
-  background: var(--hover-red);
-  transform: translateY(-2px);
+  gap: 18px; /* Pilen flyttas lite vid hover */
 }
 
-/* --- RESPONSIVE ADJUSTMENTS --- */
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .about-section-home {
+    gap: 40px;
+    padding: 60px 5%;
+  }
+
+  .about-text h2 {
+    font-size: 2.2rem;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .hero-overlay {
-    padding: 0 20px 35px;
-    align-items: flex-end;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.2) 60%,
-      transparent 100%
-    );
+  .about-section-home {
+    flex-direction: column; /* Stapla bild och text på mobilen */
+    text-align: center;
+    padding: 50px 25px;
   }
 
-  .hero-text h1 {
-    font-size: 1.6rem;
+  .about-text h2::after {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  .hero-text p {
-    display: none;
+  .about-section-home .client-logos {
+    max-width: 300px;
+    margin-bottom: 30px;
   }
 }

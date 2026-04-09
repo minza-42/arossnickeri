@@ -1,3 +1,33 @@
+/* Gör loggan större när hamburgarmenyn är öppen */
+@media (max-width: 900px) {
+  .mobile-navigation:not([hidden]) ~ .logo-container img,
+  .main-header .logo-container img {
+    height: 80px !important;
+    max-width: 220px;
+    transition: height 0.3s;
+  }
+}
+/* Dölj kontaktinfo i headern på små skärmar */
+@media (max-width: 900px) {
+  .contact-info {
+    display: none;
+  }
+}
+/* --- Visa hamburgarmeny och mobilmeny på små skärmar --- */
+@media (max-width: 900px) {
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  .navigation {
+    display: none;
+  }
+  .mobile-navigation[hidden] {
+    display: none;
+  }
+  .mobile-navigation:not([hidden]) {
+    display: block;
+  }
+}
 /* ==========================================
   RESPONSIVE DESIGN FÖR AROS SNICKERI
   Här ligger alla media queries för olika skärmstorlekar
@@ -65,6 +95,69 @@
   .read-more {
     width: 100%;
     text-align: center;
+  }
+}
+
+/* --- MOBILANPASSNING FÖR HERO --- */
+@media screen and (max-width: 768px) {
+  .hero-section {
+    /* Vi sätter en fast minimihöjd så bilderna inte blir för små på höjden */
+    height: 80vh;
+    min-height: 450px;
+  }
+
+  .hero-overlay {
+    padding: 20px;
+    align-items: center; /* Centrerar texten vertikalt på mobilen */
+    justify-content: center;
+    text-align: center;
+    /* En mörkare gradient som täcker hela ytan för bättre kontrast */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+
+  .hero-text {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .hero-text .tagline {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+  }
+
+  .hero-text h1 {
+    /* Mindre textstorlek så den inte täcker allt */
+    font-size: 1.8rem;
+    line-height: 1.3;
+    margin-bottom: 15px;
+  }
+
+  .hero-text h1 em {
+    display: block; /* Sätter "håller i generationer" på en egen rad */
+    font-size: 1.4rem;
+    font-style: italic;
+    margin-top: 5px;
+  }
+
+  .hero-text p {
+    /* Vi visar texten men gör den mindre, eller behåll 'display: none' om du vill ha det extremt stilrent */
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+
+  .hero-cta {
+    width: 100%; /* Knappen tar hela bredden på mobilen för enklare klick */
+    justify-content: center;
+    padding: 16px 20px;
+    font-size: 0.9rem;
   }
 }
 
