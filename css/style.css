@@ -838,6 +838,9 @@ footer p {
   transition: color 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  font-family: "Lato", Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  line-height: 1.7;
 }
 
 .footer-nav a:hover {

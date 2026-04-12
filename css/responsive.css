@@ -205,33 +205,87 @@
   }
 }
 
-/* Gör loggan större när hamburgarmenyn är öppen */
 @media (max-width: 900px) {
+  /* Layout för sidor med sidebar */
+  .service-detail-layout,
+  .services-layout {
+    flex-direction: column;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  /* About section */
+  .about-section {
+    flex-direction: column;
+    gap: 30px;
+    padding: 40px 10px;
+  }
+
+  /* Footer */
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 0 8px 20px;
+  }
+
+  /* 🔥 VIKTIG FIX – dölj bara header navigation */
+  .main-header .navigation {
+    display: none;
+  }
+
+  /* 🔥 Se till att footer-nav ALLTID syns */
+  .footer-nav {
+    display: block;
+  }
+
+  /* Hamburgarmeny */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-navigation[hidden] {
+    display: none;
+  }
+
+  .mobile-navigation:not([hidden]) {
+    display: block;
+  }
+
+  /* Scroll-to-top knapp */
+  #backToTop.show {
+    display: flex !important;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+    z-index: 2000;
+  }
+
+  /* Logga storlek */
   .mobile-navigation:not([hidden]) ~ .logo-container img,
   .main-header .logo-container img {
     height: 80px !important;
     max-width: 220px;
     transition: height 0.3s;
   }
-}
-/* Dölj kontaktinfo i headern på små skärmar */
-@media (max-width: 900px) {
+
+  /* Om oss */
   .contact-info {
     display: none;
   }
-}
-/* --- Visa hamburgarmeny och mobilmeny på små skärmar --- */
-@media (max-width: 900px) {
-  .mobile-menu-toggle {
-    display: flex;
-  }
-  .navigation {
-    display: none;
-  }
-  .mobile-navigation[hidden] {
-    display: none;
-  }
-  .mobile-navigation:not([hidden]) {
+
+  .footer-nav {
     display: block;
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav li {
+    margin-bottom: 10px;
   }
 }
