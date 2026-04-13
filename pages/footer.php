@@ -33,8 +33,8 @@ if (!isset($root)) $root = '../';
       <h2>Om oss</h2>
       <nav class="footer-nav">
         <ul>
-          <li><a href="<?= $root ?>includes/om-oss.php">Om oss</a></li>
-          <li><a href="<?= $root ?>includes/vad-vi-gor.php">Snickeri och maskinpark</a></li>
+          <li><a href="<?= $root ?>pages/om-oss.php">Om oss</a></li>
+          <li><a href="<?= $root ?>pages/vad-vi-gor.php">Snickeri och maskinpark</a></li>
           <li><a href="<?= $root ?>pages/kontakt.php">Kontakt</a></li>
         </ul>
       </nav>

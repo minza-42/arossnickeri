@@ -1046,7 +1046,7 @@ footer p {
 }
 
 /* Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
   /* Header */
   .main-header {
     padding: 15px 0;

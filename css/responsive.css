@@ -289,3 +289,48 @@
     margin-bottom: 10px;
   }
 }
+
+/* --- iPad Air (820px x 1180px) ---
+   Hero-höjd och centrerad logga i header
+*/
+@media (min-width: 769px) and (max-width: 820px) {
+  /* Centrerar loggan – hamburgaren är absolut positionerad så loggan
+     hamnar annars förskjuten till höger */
+  .header-wrapper {
+    position: relative;
+    justify-content: center;
+  }
+
+  .logo-container {
+    flex: 0 0 auto;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* Hero */
+  .hero-section,
+  .slideshow-container {
+    height: 380px;
+    margin: 20px auto 0;
+  }
+
+  .hero-overlay {
+    padding: 0 0 45px 50px;
+    align-items: flex-end;
+  }
+
+  .hero-text h1 {
+    font-size: 2.2rem;
+    line-height: 1.25;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 22px;
+  }
+
+  .hero-cta {
+    padding: 13px 26px;
+    font-size: 0.92rem;
+  }
+}

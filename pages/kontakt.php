@@ -3,9 +3,91 @@ $page_depth  = 'sub';
 $active_page = 'kontakt';
 $root        = '../';
 
-// Visa felmeddelande från send-email.php om det finns
+// ============================================================
+//  E-POSTHANTERING – körs direkt när formuläret skickas
+// ============================================================
 $error_message = '';
-if (!empty($_GET['error'])) {
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  // Sanitering
+  function sanitize_input($data)
+  {
+    return htmlspecialchars(stripslashes(trim($data)));
+  }
+
+  $namn       = sanitize_input($_POST['namn']       ?? '');
+  $epost      = sanitize_input($_POST['epost']      ?? '');
+  $telefon    = sanitize_input($_POST['telefon']    ?? '');
+  $meddelande = sanitize_input($_POST['meddelande'] ?? '');
+
+  // Validering
+  $errors = [];
+  if (empty($namn))      $errors[] = "Namn är obligatoriskt";
+  if (empty($epost))     $errors[] = "E-post är obligatoriskt";
+  elseif (!filter_var($epost, FILTER_VALIDATE_EMAIL)) $errors[] = "Ogiltig e-postadress";
+  if (empty($meddelande)) $errors[] = "Meddelande är obligatoriskt";
+
+  if (empty($errors)) {
+    $to      = "info@arossnickeri.se";
+    $subject = "Nytt meddelande från kontaktformulär - Aros Snickeri";
+
+    $email_content = "
+    <!DOCTYPE html>
+    <html lang='sv'>
+    <head>
+      <meta charset='UTF-8'>
+      <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
+        .header { background-color: #c7081b; color: white; padding: 20px; text-align: center; }
+        .content { background-color: white; padding: 30px; margin-top: 20px; border-radius: 5px; }
+        .field { margin-bottom: 20px; }
+        .label { font-weight: bold; color: #c7081b; display: block; margin-bottom: 5px; }
+        .value { padding: 10px; background-color: #f5f5f5; border-left: 3px solid #c7081b; }
+      </style>
+    </head>
+    <body>
+      <div class='container'>
+        <div class='header'><h2>Nytt meddelande från kontaktformuläret</h2></div>
+        <div class='content'>
+          <div class='field'>
+            <span class='label'>Namn:</span>
+            <div class='value'>" . htmlspecialchars($namn) . "</div>
+          </div>
+          <div class='field'>
+            <span class='label'>E-post:</span>
+            <div class='value'>" . htmlspecialchars($epost) . "</div>
+          </div>
+          <div class='field'>
+            <span class='label'>Telefon:</span>
+            <div class='value'>" . (!empty($telefon) ? htmlspecialchars($telefon) : 'Ej angiven') . "</div>
+          </div>
+          <div class='field'>
+            <span class='label'>Meddelande:</span>
+            <div class='value'>" . nl2br(htmlspecialchars($meddelande)) . "</div>
+          </div>
+        </div>
+      </div>
+    </body>
+    </html>";
+
+    $headers  = "MIME-Version: 1.0\r\n";
+    $headers .= "Content-type:text/html;charset=UTF-8\r\n";
+    $headers .= "From: " . $epost . "\r\n";
+    $headers .= "Reply-To: " . $epost . "\r\n";
+    $headers .= "X-Mailer: PHP/" . phpversion();
+
+    if (mail($to, $subject, $email_content, $headers)) {
+      header("Location: tack.php?namn=" . urlencode($namn));
+      exit;
+    } else {
+      $error_message = "Ett fel uppstod. Försök igen eller kontakta oss direkt via telefon.";
+    }
+  } else {
+    $error_message = implode(", ", $errors);
+  }
+} elseif (!empty($_GET['error'])) {
   $error_message = htmlspecialchars($_GET['error']);
 }
 ?>
@@ -26,7 +108,7 @@ if (!empty($_GET['error'])) {
 
 <body>
 
-  <?php include '../includes/header.php'; ?>
+  <?php include '../pages/header.php'; ?>
 
   <main class="kontakt-layout">
 
@@ -107,26 +189,29 @@ if (!empty($_GET['error'])) {
             </div>
           <?php endif; ?>
 
-          <form class="kontakt-form" action="send-email.php" method="POST">
+          <form class="kontakt-form" action="kontakt.php" method="POST">
 
             <div class="form-group">
               <label for="namn">Namn *</label>
-              <input type="text" id="namn" name="namn" required>
+              <input type="text" id="namn" name="namn" required
+                value="<?= htmlspecialchars($_POST['namn'] ?? '') ?>">
             </div>
 
             <div class="form-group">
               <label for="epost">E-post *</label>
-              <input type="email" id="epost" name="epost" required>
+              <input type="email" id="epost" name="epost" required
+                value="<?= htmlspecialchars($_POST['epost'] ?? '') ?>">
             </div>
 
             <div class="form-group">
               <label for="telefon">Telefon</label>
-              <input type="tel" id="telefon" name="telefon">
+              <input type="tel" id="telefon" name="telefon"
+                value="<?= htmlspecialchars($_POST['telefon'] ?? '') ?>">
             </div>
 
             <div class="form-group">
               <label for="meddelande">Meddelande *</label>
-              <textarea id="meddelande" name="meddelande" rows="6" required></textarea>
+              <textarea id="meddelande" name="meddelande" rows="6" required><?= htmlspecialchars($_POST['meddelande'] ?? '') ?></textarea>
             </div>
 
             <button type="submit" class="submit-btn">
@@ -141,7 +226,7 @@ if (!empty($_GET['error'])) {
 
   </main>
 
-  <?php include '../includes/footer.php'; ?>
+  <?php include '../pages/footer.php'; ?>
 
   <script src="../scr/header.js"></script>
   <script src="../scr/scrollToTop.js"></script>

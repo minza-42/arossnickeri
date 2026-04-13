@@ -20,7 +20,7 @@ $root        = '../';
 
 <body>
 
-  <?php include '../includes/header.php'; ?>
+  <?php include '../pages/header.php'; ?>
 
   <section class="page-hero">
     <img src="../img/snickeri-lokal.webp" alt="Aros Snickeri verkstad">
@@ -86,7 +86,7 @@ $root        = '../';
 
   </main>
 
-  <?php include '../includes/footer.php'; ?>
+  <?php include '../pages/footer.php'; ?>
 
   <script src="../scr/header.js"></script>
   <script src="../scr/scrollToTop.js"></script>

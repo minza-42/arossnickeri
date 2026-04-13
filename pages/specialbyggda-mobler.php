@@ -20,11 +20,11 @@ $root           = '../';
 
 <body>
 
-  <?php include __DIR__ . '/../includes/header.php'; ?>
+  <?php include __DIR__ . '/../pages/header.php'; ?>
 
   <main class="service-detail-layout">
 
-    <?php include __DIR__ . '/../includes/sidebar.php'; ?>
+    <?php include __DIR__ . '/../pages/sidebar.php'; ?>
 
     <div class="service-detail-content">
 
@@ -66,7 +66,7 @@ $root           = '../';
 
   </main>
 
-  <?php include __DIR__ . '/../includes/footer.php'; ?>
+  <?php include __DIR__ . '/footer.php'; ?>
 
   <script src="../scr/header.js"></script>
   <script src="../scr/scrollToTop.js"></script>

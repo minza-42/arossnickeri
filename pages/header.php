@@ -12,8 +12,8 @@ $root = ($page_depth === 'root') ? '' : '../';
     <nav class="navigation" aria-label="Huvudnavigation">
       <ul>
         <li><a href="<?= $root ?>index.php" <?= (isset($active_page) && $active_page === 'hem') ? ' class="active"' : '' ?>>Hem</a></li>
-        <li><a href="<?= $root ?>includes/om-oss.php" <?= (isset($active_page) && $active_page === 'om-oss') ? ' class="active"' : '' ?>>Om oss</a></li>
-        <li><a href="<?= $root ?>includes/vad-vi-gor.php" <?= (isset($active_page) && $active_page === 'vad-vi-gor') ? ' class="active"' : '' ?>>Vad vi gör</a></li>
+        <li><a href="<?= $root ?>pages/om-oss.php" <?= (isset($active_page) && $active_page === 'om-oss') ? ' class="active"' : '' ?>>Om oss</a></li>
+        <li><a href="<?= $root ?>pages/vad-vi-gor.php" <?= (isset($active_page) && $active_page === 'vad-vi-gor') ? ' class="active"' : '' ?>>Vad vi gör</a></li>
         <li><a href="<?= $root ?>pages/kontakt.php" <?= (isset($active_page) && $active_page === 'kontakt') ? ' class="active"' : '' ?>>Kontakt</a></li>
       </ul>
     </nav>
@@ -46,8 +46,8 @@ $root = ($page_depth === 'root') ? '' : '../';
   <nav class="mobile-navigation" aria-label="Mobilnavigation" hidden>
     <ul>
       <li><a href="<?= $root ?>index.php">Hem</a></li>
-      <li><a href="<?= $root ?>includes/om-oss.php">Om oss</a></li>
-      <li><a href="<?= $root ?>includes/vad-vi-gor.php">Vad vi gör</a></li>
+      <li><a href="<?= $root ?>pages/om-oss.php">Om oss</a></li>
+      <li><a href="<?= $root ?>pages/vad-vi-gor.php">Vad vi gör</a></li>
       <li><a href="<?= $root ?>pages/kontakt.php">Kontakt</a></li>
     </ul>
   </nav>

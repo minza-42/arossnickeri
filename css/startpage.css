@@ -254,7 +254,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
   .about-section-home {
     flex-direction: column; /* Stapla bild och text på mobilen */
     text-align: center;

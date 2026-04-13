@@ -20,11 +20,11 @@ $root        = '../';
 
 <body>
 
-  <?php include '../includes/header.php'; ?>
+  <?php include '../pages/header.php'; ?>
 
   <main class="services-layout">
 
-    <?php include '../includes/sidebar.php'; ?>
+    <?php include '../pages/sidebar.php'; ?>
 
     <div class="services-content">
 
@@ -160,7 +160,7 @@ $root        = '../';
 
   </main>
 
-  <?php include '../includes/footer.php'; ?>
+  <?php include '../pages/footer.php'; ?>
 
   <script src="../scr/header.js"></script>
   <script src="../scr/scrollToTop.js"></script>

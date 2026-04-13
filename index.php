@@ -23,7 +23,7 @@ $root        = '';
 
 <body>
 
-  <?php include 'includes/header.php'; ?>
+  <?php include 'pages/header.php'; ?>
 
   <section class="hero-section">
     <div class="slideshow-container">
@@ -50,7 +50,7 @@ $root        = '';
   </section>
 
   <section class="info-section">
-    <a class="column column-link" href="includes/vad-vi-gor.php">
+    <a class="column column-link" href="pages/vad-vi-gor.php">
       <div class="icon"><img src="img/svg/trolley.svg" alt="Varukorg" width="80" height="80"></div>
       <h3>Produkter</h3>
       <p>
@@ -62,7 +62,7 @@ $root        = '';
       <span class="read-more">Vad vi kan göra →</span>
     </a>
 
-    <a class="column column-link" href="includes/om-oss.php">
+    <a class="column column-link" href="pages/om-oss.php">
       <div class="icon"><img src="img/svg/hardware.svg" alt="Globe" width="80" height="80"></div>
       <h3>Om Aros Snickeri</h3>
       <p>
@@ -85,11 +85,11 @@ $root        = '';
         möjligheten för att tillverka större serier.</p>
       <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar alla
         våra snickerier.</p>
-      <a href="includes/om-oss.php" class="read-more">Mer om oss →</a>
+      <a href="pages/om-oss.php" class="read-more">Mer om oss →</a>
     </div>
   </section>
 
-  <?php include 'includes/footer.php'; ?>
+  <?php include 'pages/footer.php'; ?>
 
   <script src="scr/scrollToTop.min.js" defer></script>
   <script src="scr/header.min.js" defer></script>

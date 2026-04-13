@@ -259,7 +259,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
   .service-detail-layout {
     margin: 20px auto;
     padding: 0 15px;

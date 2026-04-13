@@ -3,7 +3,7 @@ $page_depth  = 'sub';
 $active_page = 'kontakt';
 $root        = '../';
 
-// Hämta namn från querystring (skickas av send-email.php)
+// Hämta namn från querystring (skickas av kontakt.php)
 $namn = !empty($_GET['namn']) ? htmlspecialchars($_GET['namn']) : '';
 ?>
 <!DOCTYPE html>
@@ -17,14 +17,12 @@ $namn = !empty($_GET['namn']) ? htmlspecialchars($_GET['namn']) : '';
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/tack.css">
   <meta name="description" content="Tack för ditt meddelande till Aros Snickeri! Vi återkommer så snart som möjligt.">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <?php include '../includes/header.php'; ?>
+  <?php include '../pages/header.php'; ?>
 
   <main>
     <div class="thank-you-container">
@@ -35,9 +33,7 @@ $namn = !empty($_GET['namn']) ? htmlspecialchars($_GET['namn']) : '';
         </svg>
       </div>
 
-      <h1>Tack
-        <?= $namn ? ', ' . $namn : '' ?> för ditt meddelande!
-      </h1>
+      <h1>Tack<?= $namn ? ', ' . $namn : '' ?> för ditt meddelande!</h1>
       <p class="lead-text">
         Vi har tagit emot ditt meddelande och återkommer till dig så snart som möjligt.
       </p>
@@ -51,13 +47,13 @@ $namn = !empty($_GET['namn']) ? htmlspecialchars($_GET['namn']) : '';
 
       <div class="button-group">
         <a href="../index.php" class="btn btn-primary">Till startsidan</a>
-        <a href="../html/vad-vi-gor.php" class="btn btn-secondary">Våra tjänster</a>
+        <a href="vad-vi-gor.php" class="btn btn-secondary">Våra tjänster</a>
       </div>
 
     </div>
   </main>
 
-  <?php include '../includes/footer.php'; ?>
+  <?php include '../pages/footer.php'; ?>
 
   <script src="../scr/header.js"></script>
   <script type="module" src="../scr/main.js"></script>
