@@ -77,8 +77,8 @@
 
   .hero-overlay {
     padding: 20px;
-    align-items: left; /* Centrerar texten vertikalt på mobilen */
-    justify-content: left;
+    align-items: flex-start; /* Centrerar texten vertikalt på mobilen */
+    justify-content: flex-start;
     text-align: left;
   }
 

@@ -130,7 +130,7 @@ h6 {
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: px;
+  gap: 20px;
 }
 
 .navigation a {
@@ -1134,6 +1134,7 @@ footer p {
 
   .specialty-section > p {
     font-size: 1.05rem;
+    margin-bottom: 30px;
   }
 
   .product-highlight img {
@@ -1303,6 +1304,7 @@ footer p {
 
   .slide-btn {
     font-size: 1.5rem;
+    padding: 0 10px;
   }
 
   .specialty-section h2 {
