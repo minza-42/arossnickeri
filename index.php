@@ -35,7 +35,7 @@ $root        = '';
     </div>
     <div class="hero-overlay" aria-hidden="false">
       <div class="hero-text">
-        <span class="tagline">Specialsnickeri · Uppsala · Sedan 1988</span>
+        <span class="tagline">Specialsnickeri · Uppsala · Sedan 1990</span>
         <h1>Hantverk som<br><em>håller i generationer</em></h1>
         <p>Platsanpassade inredningar och möbler för företag, offentliga miljöer och privata hem.</p>
         <a href="pages/kontakt.php" class="hero-cta">
