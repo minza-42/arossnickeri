@@ -28,11 +28,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   elseif (!filter_var($epost, FILTER_VALIDATE_EMAIL)) $errors[] = "Ogiltig e-postadress";
   if (empty($meddelande)) $errors[] = "Meddelande är obligatoriskt";
 
+  // Hantera bilduppladdning
+  $attachments = [];
+  $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+  $max_file_size = 10 * 1024 * 1024; // 10 MB per bild
+
+  if (!empty($_FILES['bilder']['name'][0])) {
+    foreach ($_FILES['bilder']['tmp_name'] as $i => $tmp_name) {
+      if ($_FILES['bilder']['error'][$i] !== UPLOAD_ERR_OK) continue;
+      if ($_FILES['bilder']['size'][$i] > $max_file_size) {
+        $errors[] = "Bilden \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" är för stor (max 10 MB)";
+        continue;
+      }
+      $finfo     = finfo_open(FILEINFO_MIME_TYPE);
+      $mime_type = finfo_file($finfo, $tmp_name);
+      finfo_close($finfo);
+      if (!in_array($mime_type, $allowed_types)) {
+        $errors[] = "Filtypen för \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" stöds inte (JPG, PNG, GIF, WEBP tillåtet)";
+        continue;
+      }
+      $attachments[] = [
+        'tmp_name' => $tmp_name,
+        'name'     => $_FILES['bilder']['name'][$i],
+        'mime'     => $mime_type,
+      ];
+    }
+  }
+
   if (empty($errors)) {
     $to      = "info@arossnickeri.se";
     $subject = "Nytt meddelande från kontaktformulär - Aros Snickeri";
 
-    $email_content = "
+    $html_body = "
     <!DOCTYPE html>
     <html lang='sv'>
     <head>
@@ -67,18 +94,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <span class='label'>Meddelande:</span>
             <div class='value'>" . nl2br(htmlspecialchars($meddelande)) . "</div>
           </div>
+          " . (!empty($attachments) ? "<div class='field'><span class='label'>Bilagor:</span><div class='value'>" . count($attachments) . " bild(er) bifogad(e)</div></div>" : "") . "
         </div>
       </div>
     </body>
     </html>";
 
-    $headers  = "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8\r\n";
-    $headers .= "From: " . $epost . "\r\n";
-    $headers .= "Reply-To: " . $epost . "\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    $boundary = md5(uniqid(time()));
 
-    if (mail($to, $subject, $email_content, $headers)) {
+    if (!empty($attachments)) {
+      // Multipart e-post med bilagor
+      $headers  = "MIME-Version: 1.0\r\n";
+      $headers .= "Content-Type: multipart/mixed; boundary=\"{$boundary}\"\r\n";
+      $headers .= "From: " . $epost . "\r\n";
+      $headers .= "Reply-To: " . $epost . "\r\n";
+      $headers .= "X-Mailer: PHP/" . phpversion();
+
+      $body  = "--{$boundary}\r\n";
+      $body .= "Content-Type: text/html; charset=UTF-8\r\n";
+      $body .= "Content-Transfer-Encoding: base64\r\n\r\n";
+      $body .= chunk_split(base64_encode($html_body)) . "\r\n";
+
+      foreach ($attachments as $att) {
+        $file_data = file_get_contents($att['tmp_name']);
+        $body .= "--{$boundary}\r\n";
+        $body .= "Content-Type: " . $att['mime'] . "; name=\"" . $att['name'] . "\"\r\n";
+        $body .= "Content-Transfer-Encoding: base64\r\n";
+        $body .= "Content-Disposition: attachment; filename=\"" . $att['name'] . "\"\r\n\r\n";
+        $body .= chunk_split(base64_encode($file_data)) . "\r\n";
+      }
+      $body .= "--{$boundary}--";
+
+      $mail_sent = mail($to, $subject, $body, $headers);
+    } else {
+      // Vanlig HTML-e-post utan bilagor
+      $headers  = "MIME-Version: 1.0\r\n";
+      $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+      $headers .= "From: " . $epost . "\r\n";
+      $headers .= "Reply-To: " . $epost . "\r\n";
+      $headers .= "X-Mailer: PHP/" . phpversion();
+
+      $mail_sent = mail($to, $subject, $html_body, $headers);
+    }
+
+    if ($mail_sent) {
       header("Location: tack.php?namn=" . urlencode($namn));
       exit;
     } else {
@@ -103,6 +162,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <link rel="stylesheet" href="../css/responsive.css">
   <link rel="stylesheet" href="../css/kontakt.css">
   <meta name="description" content="Kontakta Aros Snickeri i Uppsala – vi hjälper dig med frågor, offert eller rådgivning kring specialsnickerier, möbler och inredningar. Välkommen att höra av dig!">
+  <style>
+    .form-hint {
+      display: block;
+      margin-top: 5px;
+      font-size: 0.85em;
+      color: #666;
+    }
+  </style>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 
@@ -189,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
           <?php endif; ?>
 
-          <form class="kontakt-form" action="kontakt.php" method="POST">
+          <form class="kontakt-form" action="kontakt.php" method="POST" enctype="multipart/form-data">
 
             <div class="form-group">
               <label for="namn">Namn *</label>
@@ -214,6 +281,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <textarea id="meddelande" name="meddelande" rows="6" required><?= htmlspecialchars($_POST['meddelande'] ?? '') ?></textarea>
             </div>
 
+            <div class="form-group">
+              <label for="bilder">Bilder (valfritt)</label>
+              <input type="file" id="bilder" name="bilder[]" multiple
+                accept="image/jpeg,image/png,image/gif,image/webp">
+              <small class="form-hint">Du kan bifoga upp till 5 bilder (JPG, PNG, GIF, WEBP – max 10 MB per bild)</small>
+            </div>
+
             <button type="submit" class="submit-btn">
               Skicka <span class="arrow">&rarr;</span>
             </button>
@@ -231,6 +305,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="../scr/header.js"></script>
   <script src="../scr/scrollToTop.js"></script>
   <script type="module" src="../scr/main.js"></script>
+  <script>
+    document.getElementById('bilder').addEventListener('change', function() {
+      if (this.files.length > 5) {
+        alert('Du kan bifoga max 5 bilder åt gången.');
+        this.value = '';
+      }
+    });
+  </script>
 </body>
 
 </html>
