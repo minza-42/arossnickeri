@@ -72,7 +72,7 @@ $root        = '../';
         exempelvis större serier.
       </p>
 
-      <h3>600 kvadratmeter snickeri</h3>
+      <h3>800 kvadratmeter snickeri</h3>
       <p>
         Sedan våren 2022 hittar du oss i nya fräscha lokaler i industriområdet Gnista i Uppsala.
         Tack vare vår välutrustade och moderna maskinpark kan vi även erbjuda effektiv serietillverkning
