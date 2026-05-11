@@ -3,12 +3,19 @@ $page_depth  = 'sub';
 $active_page = 'kontakt';
 $root        = '../';
 
+session_start();
+$min_time_seconds = 3; // Minsta tid innan formulär får skickas
 // ============================================================
 //  E-POSTHANTERING – körs direkt när formuläret skickas
 // ============================================================
 $error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+  // Sätt timestamp när sidan laddas (GET)
+  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $_SESSION['kontakt_form_time'] = time();
+  }
 
   // Sanitering
   function sanitize_input($data)
@@ -17,9 +24,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   $namn       = sanitize_input($_POST['namn']       ?? '');
+
+  // Tidsbaserad kontroll
+  $form_time = $_SESSION['kontakt_form_time'] ?? 0;
+  if ($form_time > 0 && (time() - $form_time) < $min_time_seconds) {
+    // För snabbt – troligen bot
+    header("Location: tack.php?namn=" . urlencode($namn));
+    exit;
+  }
   $epost      = sanitize_input($_POST['epost']      ?? '');
   $telefon    = sanitize_input($_POST['telefon']    ?? '');
   $meddelande = sanitize_input($_POST['meddelande'] ?? '');
+
+  $honeypot = $_POST['honeypot'] ?? '';
+  if (!empty($honeypot)) {
+    // Det är en bot. Vi låtsas som att det gick bra men skickar inget mejl.
+    header("Location: tack.php?namn=" . urlencode($namn));
+    exit;
+  }
 
   // Validering
   $errors = [];
@@ -106,8 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Multipart e-post med bilagor
       $headers  = "MIME-Version: 1.0\r\n";
       $headers .= "Content-Type: multipart/mixed; boundary=\"{$boundary}\"\r\n";
-      $headers .= "From: " . $epost . "\r\n";
-      $headers .= "Reply-To: " . $epost . "\r\n";
+      $headers .= "From: info@arossnickeri.se\r\n"; // Alltid från domänen
+      $headers .= "Reply-To: " . $epost . "\r\n";    // Svaret går till kunden
       $headers .= "X-Mailer: PHP/" . phpversion();
 
       $body  = "--{$boundary}\r\n";
@@ -130,8 +152,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       // Vanlig HTML-e-post utan bilagor
       $headers  = "MIME-Version: 1.0\r\n";
       $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-      $headers .= "From: " . $epost . "\r\n";
-      $headers .= "Reply-To: " . $epost . "\r\n";
+      $headers .= "From: info@arossnickeri.se\r\n"; // Alltid från domänen
+      $headers .= "Reply-To: " . $epost . "\r\n";    // Svaret går till kunden
       $headers .= "X-Mailer: PHP/" . phpversion();
 
       $mail_sent = mail($to, $subject, $html_body, $headers);
@@ -286,6 +308,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <input type="file" id="bilder" name="bilder[]" multiple
                 accept="image/jpeg,image/png,image/gif,image/webp">
               <small class="form-hint">Du kan bifoga upp till 5 bilder (JPG, PNG, GIF, WEBP – max 10 MB per bild)</small>
+            </div>
+
+            <div style="display:none;">
+              <label for="honeypot">Lämna detta fält tomt</label>
+              <input type="text" name="honeypot" id="honeypot" value="">
             </div>
 
             <button type="submit" class="submit-btn">
