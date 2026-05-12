@@ -4,7 +4,17 @@ $active_page = 'kontakt';
 $root        = '../';
 
 session_start();
-$min_time_seconds = 3; // Minsta tid innan formulär får skickas
+
+$min_time_seconds = 5;
+$max_submissions_per_hour = 3;
+
+// ============================================================
+//  Sätt timestamp när sidan laddas (GET)
+// ============================================================
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+  $_SESSION['kontakt_form_time'] = time();
+}
+
 // ============================================================
 //  E-POSTHANTERING – körs direkt när formuläret skickas
 // ============================================================
@@ -12,72 +22,93 @@ $error_message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-  // Sätt timestamp när sidan laddas (GET)
-  if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $_SESSION['kontakt_form_time'] = time();
-  }
-
-  // Sanitering
+  // --- Sanitering ---
   function sanitize_input($data)
   {
     return htmlspecialchars(stripslashes(trim($data)));
   }
 
   $namn       = sanitize_input($_POST['namn']       ?? '');
-
-  // Tidsbaserad kontroll
-  $form_time = $_SESSION['kontakt_form_time'] ?? 0;
-  if ($form_time > 0 && (time() - $form_time) < $min_time_seconds) {
-    // För snabbt – troligen bot
-    header("Location: tack.php?namn=" . urlencode($namn));
-    exit;
-  }
   $epost      = sanitize_input($_POST['epost']      ?? '');
   $telefon    = sanitize_input($_POST['telefon']    ?? '');
   $meddelande = sanitize_input($_POST['meddelande'] ?? '');
 
-  $honeypot = $_POST['honeypot'] ?? '';
+  // --- Honeypot-kontroll ---
+  $honeypot = $_POST['website'] ?? '';  // Dolt fält med ett ofarligt namn
   if (!empty($honeypot)) {
-    // Det är en bot. Vi låtsas som att det gick bra men skickar inget mejl.
     header("Location: tack.php?namn=" . urlencode($namn));
     exit;
   }
 
-  // Validering
-  $errors = [];
-  if (empty($namn))      $errors[] = "Namn är obligatoriskt";
-  if (empty($epost))     $errors[] = "E-post är obligatoriskt";
-  elseif (!filter_var($epost, FILTER_VALIDATE_EMAIL)) $errors[] = "Ogiltig e-postadress";
-  if (empty($meddelande)) $errors[] = "Meddelande är obligatoriskt";
+  // --- Tidsbaserad kontroll (fixad: timestamp sätts nu vid GET ovan) ---
+  $form_time = $_SESSION['kontakt_form_time'] ?? 0;
+  if ($form_time === 0 || (time() - $form_time) < $min_time_seconds) {
+    // För snabbt – troligen bot
+    header("Location: tack.php?namn=" . urlencode($namn));
+    exit;
+  }
 
-  // Hantera bilduppladdning
+  // --- Rate limiting per IP (max 3 skickningar per timme) ---
+  $ip = $_SERVER['REMOTE_ADDR'] ?? 'unknown';
+  $ip_key = 'kontakt_rate_' . md5($ip);
+  if (!isset($_SESSION[$ip_key])) {
+    $_SESSION[$ip_key] = ['count' => 0, 'window_start' => time()];
+  }
+  $rate = &$_SESSION[$ip_key];
+  if ((time() - $rate['window_start']) > 3600) {
+    // Nytt fönster
+    $rate['count'] = 0;
+    $rate['window_start'] = time();
+  }
+  $rate['count']++;
+  if ($rate['count'] > $max_submissions_per_hour) {
+    $error_message = "För många försök. Vänta en stund och försök igen, eller kontakta oss direkt via telefon.";
+  }
+
+  // --- Validering ---
+  $errors = [];
+  if (!$error_message) {
+    if (empty($namn))      $errors[] = "Namn är obligatoriskt";
+    if (empty($epost))     $errors[] = "E-post är obligatoriskt";
+    elseif (!filter_var($epost, FILTER_VALIDATE_EMAIL)) $errors[] = "Ogiltig e-postadress";
+    if (empty($meddelande)) $errors[] = "Meddelande är obligatoriskt";
+    // Blockera header injection i e-postfältet
+    if (preg_match('/[\r\n]/', $epost)) $errors[] = "Ogiltig e-postadress";
+  }
+
+  // --- Hantera bilduppladdning ---
   $attachments = [];
   $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-  $max_file_size = 10 * 1024 * 1024; // 10 MB per bild
+  $max_file_size = 10 * 1024 * 1024;
 
-  if (!empty($_FILES['bilder']['name'][0])) {
-    foreach ($_FILES['bilder']['tmp_name'] as $i => $tmp_name) {
-      if ($_FILES['bilder']['error'][$i] !== UPLOAD_ERR_OK) continue;
-      if ($_FILES['bilder']['size'][$i] > $max_file_size) {
-        $errors[] = "Bilden \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" är för stor (max 10 MB)";
-        continue;
+  if (empty($errors) && !empty($_FILES['bilder']['name'][0])) {
+    $file_count = count($_FILES['bilder']['tmp_name']);
+    if ($file_count > 5) {
+      $errors[] = "Max 5 bilder tillåtna";
+    } else {
+      foreach ($_FILES['bilder']['tmp_name'] as $i => $tmp_name) {
+        if ($_FILES['bilder']['error'][$i] !== UPLOAD_ERR_OK) continue;
+        if ($_FILES['bilder']['size'][$i] > $max_file_size) {
+          $errors[] = "Bilden \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" är för stor (max 10 MB)";
+          continue;
+        }
+        $finfo     = finfo_open(FILEINFO_MIME_TYPE);
+        $mime_type = finfo_file($finfo, $tmp_name);
+        finfo_close($finfo);
+        if (!in_array($mime_type, $allowed_types)) {
+          $errors[] = "Filtypen för \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" stöds inte (JPG, PNG, GIF, WEBP tillåtet)";
+          continue;
+        }
+        $attachments[] = [
+          'tmp_name' => $tmp_name,
+          'name'     => $_FILES['bilder']['name'][$i],
+          'mime'     => $mime_type,
+        ];
       }
-      $finfo     = finfo_open(FILEINFO_MIME_TYPE);
-      $mime_type = finfo_file($finfo, $tmp_name);
-      finfo_close($finfo);
-      if (!in_array($mime_type, $allowed_types)) {
-        $errors[] = "Filtypen för \"" . htmlspecialchars($_FILES['bilder']['name'][$i]) . "\" stöds inte (JPG, PNG, GIF, WEBP tillåtet)";
-        continue;
-      }
-      $attachments[] = [
-        'tmp_name' => $tmp_name,
-        'name'     => $_FILES['bilder']['name'][$i],
-        'mime'     => $mime_type,
-      ];
     }
   }
 
-  if (empty($errors)) {
+  if (empty($errors) && !$error_message) {
     $to      = "info@arossnickeri.se";
     $subject = "Nytt meddelande från kontaktformulär - Aros Snickeri";
 
@@ -125,11 +156,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $boundary = md5(uniqid(time()));
 
     if (!empty($attachments)) {
-      // Multipart e-post med bilagor
       $headers  = "MIME-Version: 1.0\r\n";
       $headers .= "Content-Type: multipart/mixed; boundary=\"{$boundary}\"\r\n";
-      $headers .= "From: info@arossnickeri.se\r\n"; // Alltid från domänen
-      $headers .= "Reply-To: " . $epost . "\r\n";    // Svaret går till kunden
+      $headers .= "From: info@arossnickeri.se\r\n";
+      $headers .= "Reply-To: " . $epost . "\r\n";
       $headers .= "X-Mailer: PHP/" . phpversion();
 
       $body  = "--{$boundary}\r\n";
@@ -149,23 +179,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
       $mail_sent = mail($to, $subject, $body, $headers);
     } else {
-      // Vanlig HTML-e-post utan bilagor
       $headers  = "MIME-Version: 1.0\r\n";
       $headers .= "Content-type: text/html; charset=UTF-8\r\n";
-      $headers .= "From: info@arossnickeri.se\r\n"; // Alltid från domänen
-      $headers .= "Reply-To: " . $epost . "\r\n";    // Svaret går till kunden
+      $headers .= "From: info@arossnickeri.se\r\n";
+      $headers .= "Reply-To: " . $epost . "\r\n";
       $headers .= "X-Mailer: PHP/" . phpversion();
 
       $mail_sent = mail($to, $subject, $html_body, $headers);
     }
 
     if ($mail_sent) {
+      // Återställ timestamp så formuläret inte kan skickas direkt igen
+      unset($_SESSION['kontakt_form_time']);
       header("Location: tack.php?namn=" . urlencode($namn));
       exit;
     } else {
       $error_message = "Ett fel uppstod. Försök igen eller kontakta oss direkt via telefon.";
     }
-  } else {
+  } elseif (!empty($errors)) {
     $error_message = implode(", ", $errors);
   }
 } elseif (!empty($_GET['error'])) {
@@ -190,6 +221,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       margin-top: 5px;
       font-size: 0.85em;
       color: #666;
+    }
+
+    /* Dölj honeypot-fältet – via CSS, inte inline style */
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      opacity: 0;
+      height: 0;
+      overflow: hidden;
     }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -310,9 +351,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               <small class="form-hint">Du kan bifoga upp till 5 bilder (JPG, PNG, GIF, WEBP – max 10 MB per bild)</small>
             </div>
 
-            <div style="display:none;">
-              <label for="honeypot">Lämna detta fält tomt</label>
-              <input type="text" name="honeypot" id="honeypot" value="">
+            <!-- Honeypot: dolt via CSS-klass, inte inline style -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="website">Lämna detta fält tomt</label>
+              <input type="text" name="website" id="website" tabindex="-1" autocomplete="off" value="">
             </div>
 
             <button type="submit" class="submit-btn">
