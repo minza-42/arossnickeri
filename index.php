@@ -78,19 +78,21 @@ $root        = '';
     </a>
   </section>
 
-  <section class="about-section-home">
-    <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos" width="500" height="120">
-    <div class="about-text">
-      <h2>Aros Snickeri</h2>
-      <p>Vi arbetar med beställningssnickerier inom byggnadssnickerier, offentlig miljö samt platsanpassad inredning
-        såsom trappor, receptionsdiskar, bänkskivor, bokhyllor och möbler.</p>
-      <p>Vi har en toppmodern och välutrustad maskinpark med bland annat datorstyrda maskiner, vilket öppnar upp
-        möjligheten för att tillverka större serier.</p>
-      <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar alla
-        våra snickerier.</p>
-      <a href="pages/om-oss.php" class="read-more">Mer om oss →</a>
-    </div>
-  </section>
+  <div class="about-section-home-wrapper">
+    <section class="about-section-home">
+      <img src="img/aros-loggor.png" alt="Våra kunder" class="client-logos" width="500" height="120">
+      <div class="about-text">
+        <h2>Aros Snickeri</h2>
+        <p>Vi arbetar med beställningssnickerier inom byggnadssnickerier, offentlig miljö samt platsanpassad inredning
+          såsom trappor, receptionsdiskar, bänkskivor, bokhyllor och möbler.</p>
+        <p>Vi har en toppmodern och välutrustad maskinpark med bland annat datorstyrda maskiner, vilket öppnar upp
+          möjligheten för att tillverka större serier.</p>
+        <p>Även om vår maskinpark till stor del är datoriserad lever det traditionella hantverket kvar och genomsyrar alla
+          våra snickerier.</p>
+        <a href="pages/om-oss.php" class="read-more">Mer om oss →</a>
+      </div>
+    </section>
+  </div>
 
   <?php include 'pages/footer.php'; ?>
 
